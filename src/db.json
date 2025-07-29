@@ -1,293 +1,90 @@
 {
     "ads": [
-    {
+          {
       "id": 1,
+      "image": "https://plus.unsplash.com/premium_photo-1700056213493-d2a2747c76be?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+       {
+      "id": 2,
+      "image": "https://plus.unsplash.com/premium_photo-1712844226215-93e5cefdd781?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 3,
       "title": "Ad_1",
       "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop"
     },
     {
-      "id": 2,
+      "id": 4,
       "title": "Ad_2",
-      "image": "/ads/Ad_3.png"
+      "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
-      "id": 3,
+      "id": 5,
       "title": "Ad_3",
-      "image": "/ads/Ad_1.png"
+      "image": "https://images.unsplash.com/photo-1542060748-10c28b62716f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+ 
+     {
+      "id": 6,
+      "image": "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
+
   ],
   
 "products": [
     {
       "id": 1,
-      "title": "Product 1",
-      "image": "/vape_products/vape_1.jpg",
-      "description": "Description of product 1",
-      "rating": 4,
-      "categories": ["Accessories", "Mods"],
-      "price": 100
+      "title": "Urban Streetwear Hoodie",
+      "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=600&fit=crop",
+      "description": "Premium cotton blend hoodie with modern streetwear design. Perfect for urban adventures.",
+      "rating": 3,
+      "categories": ["hoodies"],
+      "price": 119.99
     },
     {
       "id": 2,
-      "title": "Product 2",
-      "image": "/vape_products/vape_11.jpg",
-      "description": "Description of product 2",
-      "rating": 4,
-      "categories": ["E-liquids"],
-      "price": 200
+      "title": "Minimalist Tee",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=600&fit=crop",
+      "description": "Clean, minimal design that speaks volumes. Made from sustainable organic cotton.",
+      "rating": 5,
+      "categories": ["tshirts"],
+      "price": 59.99
     },
     {
       "id": 3,
-      "title": "Product 3",
-      "image": "/vape_products/vape2.jpg",
-      "description": "Description of product 3",
-      "rating": 4,
-      "categories": ["Drinks", "Pod Mods"],
-      "price": 150
+      "title": "Cargo Pants",
+      "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=600&fit=crop",
+      "description": "Functional meets fashionable. Premium cargo pants with modern silhouette.",
+      "rating": 1,
+      "categories": ["pants"],
+      "price": 99.99
     },
     {
       "id": 4,
-      "title": "Product 4",
-      "image": "/vape_products/vape3.jpg",
-      "description": "Description of product 4",
+      "title": "Oversized Blazer",
+      "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&h=600&fit=crop",
+      "description": "Tailored oversized blazer that redefines smart casual. Perfect for any occasion.",
       "rating": 4,
-      "categories": ["Disposable"],
-      "price": 120
+      "categories": ["jackets"],
+      "price": 199.99
     },
     {
       "id": 5,
-      "title": "Product 5",
-      "image": "/vape_products/vape4.jpg",
+      "title": "Cropped Jacket",
+      "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=600&fit=crop",
       "description": "Description of product 5",
       "rating": 4,
-      "categories": ["Starter Kits"],
-      "price": 180
+      "categories": ["jackets"],
+      "price": 124.99
     },
     {
       "id": 6,
-      "title": "Product 6",
-      "image": "/vape_products/vape5.jpg",
-      "description": "Description of product 6",
+      "title": "Wide-Leg Jeans",
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&h=600&fit=crop",
+      "description": "Vintage-inspired wide-leg jeans with a modern twist. Comfort meets style.",
       "rating": 4,
-      "categories": ["Dry Herb"],
-      "price": 250
-    },
-    {
-      "id": 7,
-      "title": "Product 7",
-      "image": "/vape_products/vape7.jpg",
-      "description": "Description of product 7",
-      "rating": 4,
-      "categories": ["Pod Mods"],
-      "price": 300
-    },
-    {
-      "id": 8,
-      "title": "Product 8",
-      "image": "/vape_products/vape8.jpg",
-      "description": "Description of product 8",
-      "rating": 4,
-      "categories": ["Mods"],
-      "price": 90
-    },
-    {
-      "id": 9,
-      "title": "Product 9",
-      "image": "/vape_products/vape9.jpg",
-      "description": "Description of product 9",
-      "rating": 4,
-      "categories": ["Nic Salts"],
-      "price": 80,
-      "isPopular": true
-    },
-    {
-      "id": 10,
-      "title": "Product 10",
-      "image": "/vape_products/vape12.jpg",
-      "description": "Description of product 10",
-      "rating": 4,
-      "categories": ["Disposable"],
-      "price": 200,
-      "isPopular": true
-    },
-    {
-      "id": 11,
-      "title": "Product 11",
-      "image": "/vape_products/vape_1.jpg",
-      "description": "Description of product 11",
-      "rating": 4,
-      "categories": ["Pod Devices"],
-      "price": 400
-    },
-    {
-      "id": 12,
-      "title": "Product 12",
-      "image": "/vape_products/vape_11.jpg",
-      "description": "Description of product 12",
-      "rating": 4,
-      "categories": ["Starter Kits"],
-      "price": 180,
-      "isPopular": true
-    },
-    {
-      "id": 13,
-      "title": "Product 13",
-      "image": "/vape_products/vape2.jpg",
-      "description": "Description of product 13",
-      "rating": 4,
-      "categories": ["E-liquids"],
-      "price": 220
-    },
-    {
-      "id": 14,
-      "title": "Product 14",
-      "image": "/vape_products/vape3.jpg",
-      "description": "Description of product 14",
-      "rating": 4,
-      "categories": ["Mods"],
-      "price": 150
-    },
-    {
-      "id": 15,
-      "title": "Product 15",
-      "image": "/vape_products/vape4.jpg",
-      "description": "Description of product 15",
-      "rating": 4,
-      "categories": ["Pod Devices"],
-      "price": 300,
-      "isPopular": true
-    },
-    {
-      "id": 16,
-      "title": "Product 16",
-      "image": "/vape_products/vape5.jpg",
-      "description": "Description of product 16",
-      "rating": 4,
-      "categories": ["Accessories"],
-      "price": 350
-    },
-    {
-      "id": 17,
-      "title": "Product 17",
-      "image": "/vape_products/vape7.jpg",
-      "description": "Description of product 17",
-      "rating": 4,
-      "categories": ["Nic Salts"],
-      "price": 400,
-      "isPopular": true
-    },
-    {
-      "id": 18,
-      "title": "Product 18",
-      "image": "/vape_products/vape8.jpg",
-      "description": "Description of product 18",
-      "rating": 4,
-      "categories": ["Drinks"],
-      "price": 100
-    },
-    {
-      "id": 19,
-      "title": "Product 19",
-      "image": "/vape_products/vape9.jpg",
-      "description": "Description of product 19",
-      "rating": 4,
-      "categories": ["Dry Herb"],
-      "price": 120,
-      "isPopular": true
-    },
-    {
-      "id": 20,
-      "title": "Product 20",
-      "image": "/vape_products/vape_1.jpg",
-      "description": "Description of product 20",
-      "rating": 4,
-      "categories": ["Starter Kits"],
-      "price": 180,
-      "isPopular": true
-    },
-    {
-      "id": 21,
-      "title": "Product 21",
-      "image": "/vape_products/vape_11.jpg",
-      "description": "Description of product 21",
-      "rating": 4,
-      "categories": ["Accessories"],
-      "price": 250
-    },
-    {
-      "id": 22,
-      "title": "Product 22",
-      "image": "/vape_products/vape2.jpg",
-      "description": "Description of product 22",
-      "rating": 4,
-      "categories": ["Mods"],
-      "price": 300,
-      "isPopular": true
-    },
-    {
-      "id": 23,
-      "title": "Product 23",
-      "image": "/vape_products/vape3.jpg",
-      "description": "Description of product 23",
-      "rating": 4,
-      "categories": ["Disposable"],
-      "price": 320
-    },
-    {
-      "id": 24,
-      "title": "Product 24",
-      "image": "/vape_products/vape4.jpg",
-      "description": "Description of product 24",
-      "rating": 4,
-      "categories": ["E-liquids"],
-      "price": 200
-    },
-    {
-      "id": 25,
-      "title": "Product 25",
-      "image": "/vape_products/vape5.jpg",
-      "description": "Description of product 25",
-      "rating": 4,
-      "categories": ["Pod Devices"],
-      "price": 250,
-      "isPopular": true
-    },
-    {
-      "id": 26,
-      "title": "Product 26",
-      "image": "/vape_products/vape7.jpg",
-      "description": "Description of product 26",
-      "rating": 4,
-      "categories": ["Nic Salts"],
-      "price": 280
-    },
-    {
-      "id": 27,
-      "title": "Product 27",
-      "image": "/vape_products/vape8.jpg",
-      "description": "Description of product 27",
-      "rating": 4,
-      "categories": ["Drinks"],
-      "price": 350
-    },
-    {
-      "id": 28,
-      "title": "Product 28",
-      "image": "/vape_products/vape9.jpg",
-      "description": "Description of product 28",
-      "rating": 4,
-      "categories": ["Dry Herb"],
-      "price": 150,
-      "isPopular": true
-    },
-    {
-      "id": 29,
-      "title": "Product 29",
-      "image": "/vape_products/vape_1.jpg",
-      "description": "Description of product 29",
-      "rating": 4,
-      "categories": ["E-liquids"],
-      "price": 200
+      "categories": ["pants"],
+      "price": 89.99
     }
   ]
 

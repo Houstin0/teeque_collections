@@ -36,7 +36,7 @@ export default function Footer() {
                 onClick={scrollToTop}
                 className="hover:underline me-4 md:me-6"
               >
-                About Us
+                About
               </NavLink>
             </li>
             {/* <li>
@@ -55,7 +55,7 @@ export default function Footer() {
                 onClick={scrollToTop}
                 className="hover:underline"
               >
-                Contact Us
+                Contact
               </NavLink>
             </li>
           </ul>
