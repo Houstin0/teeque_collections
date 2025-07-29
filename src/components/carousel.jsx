@@ -43,6 +43,10 @@ const Carousel = () => {
         data-carousel="slide"
         ref={carouselRef}
       >
+
+
+
+
         <div className="relative h-56 overflow-hidden md:h-[550px]">
           {productsData.ads.map((ad, index) => (
             <div

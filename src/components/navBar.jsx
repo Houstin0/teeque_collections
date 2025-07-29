@@ -153,7 +153,7 @@ export default function Navbar({ onSearch }) {
 
   return (
     <header>
-      <nav className="fixed w-full z-20 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-6">
+      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-6">
         <div className="w-full flex flex-wrap items-center justify-between mx-auto">
           {/*Logo */}
           <a href="/" className="flex items-center">

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductSlider({ productsData }) {
   const scrollRef = useRef();
@@ -59,19 +60,19 @@ export default function ProductSlider({ productsData }) {
         {productsData.products.map((product, index) => (
           <div key={index} className="shrink-0">
             <div className="w-[320px] bg-white rounded-b-lg shadow-lg shadow-black dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
+                  <Link to={`/product/${encodeURIComponent(product.title)}`}>
                 <img
                   src={product.image}
                   alt="product image"
                   className="w-full h-[320px] object-cover"
                 />
-              </a>
+              </Link>
               <div className="p-5">
-                <a href="#">
+                   <Link to={`/product/${encodeURIComponent(product.title)}`}>
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                     {product.title}
                   </h5>
-                </a>
+                </Link>
                 <div className="flex items-center mt-2.5 mb-5">
                   <div className="flex items-center space-x-1 rtl:space-x-reverse">
                     {[...Array(5)].map((_, i) => (
