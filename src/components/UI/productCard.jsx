@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-64 object-cover"
+          className="w-full h-72 object-cover"
         />
       </Link>
 

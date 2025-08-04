@@ -34,7 +34,7 @@ const Carousel = () => {
         ref={carouselRef}
       >
         {/* Slide Container */}
-        <div className="relative h-[250px] sm:h-[350px] md:h-[550px] overflow-hidden">
+        <div className="relative h-[450px] md:h-[550px] overflow-hidden">
           {productsData.ads.map((ad, index) => (
             <div
               key={ad.id}

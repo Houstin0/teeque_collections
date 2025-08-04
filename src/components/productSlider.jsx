@@ -13,12 +13,21 @@ export default function ProductSlider({ productsData }) {
     <div className="relative overflow-hidden pb-4 group">
       {/* Nav Buttons */}
       <div className="absolute inset-0 flex justify-between items-center z-10 pointer-events-none">
+        
+        {/* Left Button */}
         <button
-          className="h-[100px] px-2 flex rounded-r-xl items-center justify-center bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
+          className="
+            h-[60px] md:h-[80px] 
+            px-1 md:px-2 
+            flex rounded-r-xl items-center justify-center 
+            bg-black bg-opacity-60 
+            opacity-100 md:opacity-0 md:group-hover:opacity-100
+            transition-opacity duration-300 pointer-events-auto
+          "
           onClick={() => scroll("left")}
         >
           <svg
-            className="w-8 h-8 text-white"
+            className="w-5 h-5 md:w-8 md:h-8 text-white"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -28,12 +37,20 @@ export default function ProductSlider({ productsData }) {
           </svg>
         </button>
 
+        {/* Right Button */}
         <button
-          className="h-[100px] px-2 flex rounded-l-xl items-center justify-center bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto"
+          className="
+            h-[60px] md:h-[80px] 
+            px-1 md:px-2 
+            flex rounded-l-xl items-center justify-center 
+            bg-black bg-opacity-60 
+            opacity-100 md:opacity-0 md:group-hover:opacity-100
+            transition-opacity duration-300 pointer-events-auto
+          "
           onClick={() => scroll("right")}
         >
           <svg
-            className="w-8 h-8 text-white"
+            className="w-5 h-5 md:w-8 md:h-8 text-white"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -47,7 +64,7 @@ export default function ProductSlider({ productsData }) {
       {/* Product List */}
       <div
         ref={scrollRef}
-        className="flex gap-8 mx-4 overflow-x-auto scroll-smooth no-scrollbar p-4"
+        className="flex gap-8 mx-0 overflow-x-auto scroll-smooth no-scrollbar p-4"
       >
         {productsData.products.map((product, index) => (
           <ProductCard key={index} product={product} />

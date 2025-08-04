@@ -169,22 +169,26 @@ export default function Navbar({ onSearch }) {
 
           {/* Center: Nav Links */}
           <div className="hidden md:flex flex-1 justify-center space-x-12 text-gray-800 font-medium text-lg">
-            <Link to="/"
+            <Link
+              to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Home
             </Link>
-            <Link to="/shop"
+            <Link
+              to="/shop"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Shop
             </Link>
-            <Link to="/about"
+            <Link
+              to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               About
             </Link>
-            <Link to="/contact"
+            <Link
+              to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Contact
@@ -193,17 +197,33 @@ export default function Navbar({ onSearch }) {
 
           {/* Mobile Menu Dropdown */}
           {menuOpen && (
-            <div className="absolute top-full left-0 w-full bg-white shadow-md z-10 flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium md:hidden">
-              <Link to="/" className="hover:text-[#B88C63] hover:underline transition font-serif">
+            <div className="absolute top-full left-0 w-full bg-white shadow-md z-10 flex flex-col items-center px-6 py-4 space-y-4 text-black font-medium text-lg md:hidden">
+              <Link
+                to="/"
+                className="hover:text-[#B88C63] hover:underline transition font-serif"
+                onClick={() => setMenuOpen(false)}
+              >
                 Home
               </Link>
-              <Link to="/shop" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              <Link
+                to="/shop"
+                className="hover:text-[#B88C63] hover:underline transition font-serif"
+                onClick={() => setMenuOpen(false)}
+              >
                 Shop
               </Link>
-              <Link to="/about" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              <Link
+                to="/about"
+                className="hover:text-[#B88C63] hover:underline transition font-serif"
+                onClick={() => setMenuOpen(false)}
+              >
                 About
               </Link>
-              <Link to="/contact" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              <Link
+                to="/contact"
+                className="hover:text-[#B88C63] hover:underline transition font-serif"
+                onClick={() => setMenuOpen(false)}
+              >
                 Contact
               </Link>
             </div>
@@ -407,7 +427,6 @@ export default function Navbar({ onSearch }) {
           </div>
         </div>
       </nav>
-      {/* <CategoryBar /> */}
 
       {/* Mobile Search Popup */}
       {isMobileSearchVisible && (
