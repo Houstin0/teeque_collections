@@ -5,7 +5,7 @@ export default function Footer() {
     const yearElement = document.getElementById("currentYear");
     if (yearElement) {
       const currentYear = new Date().getFullYear();
-      yearElement.textContent = `© ${currentYear} Vape Express Nairobi. All Rights Reserved.`;
+      yearElement.textContent = `© ${currentYear} TEEQUE collections. All Rights Reserved.`;
     }
   }, []);
   const scrollToTop = () => {
@@ -17,49 +17,18 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <a href="/" className="flex items-center">
-            <div
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              className="flex flex-col items-start leading-none relative tracking-wide self-center"
-            >
-              <span className="text-3xl font-bold text-black">TEEQUE</span>
-              <span className="text-base text-gray-900 ml-[4.25rem] mt-[-0.1rem]">
-                Collections
-              </span>
-            </div>
-          </a>
-          <ul className="flex flex-wrap items-center my-6 text-sm font-medium  sm:mb-0 text-black">
-            <li>
-              <NavLink
-                to="/"
-                onClick={scrollToTop}
-                className="hover:underline me-4 md:me-6"
-              >
-                About
-              </NavLink>
-            </li>
-            {/* <li>
-        <NavLink to="/privacy-policy" onClick={scrollToTop} className="hover:underline me-4 md:me-6">
-          Privacy Policy
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/licensing" onClick={scrollToTop} className="hover:underline me-4 md:me-6">
-          Licensing
-        </NavLink>
-      </li> */}
-            <li>
-              <NavLink
-                to="/"
-                onClick={scrollToTop}
-                className="hover:underline"
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+   <div className="sm:flex sm:items-center sm:justify-between">
+  <a href="/" className="flex items-center">
+    <div
+      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+      className="flex flex-col items-start leading-none relative tracking-wide self-center"
+    >
+      <span className="text-3xl font-bold text-black">TEEQUE</span>
+      <span className="text-base text-gray-900 ml-[4.25rem] mt-[-0.1rem]">
+        Collections
+      </span>
+    </div>
+  </a>
 
         <ul className="flex justify-center space-x-3 mt-4">
           <h3 className="font-semibold text-black">Follow Us on:</h3>
@@ -128,6 +97,32 @@ export default function Footer() {
             <span className="sr-only">Twitter page</span>
           </a>
         </ul>
+
+  {/* Nav Links */}
+<ul className="flex flex-wrap items-center my-6 text-sm font-medium sm:mb-0 text-black justify-end w-full sm:w-auto">
+    <li>
+      <NavLink
+        to="/"
+        onClick={scrollToTop}
+        className="hover:underline me-4 md:me-6"
+      >
+        About
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/"
+        onClick={scrollToTop}
+        className="hover:underline"
+      >
+        Contact
+      </NavLink>
+    </li>
+  </ul>
+</div>
+
+
+
 
         <hr className="my-6 border-black sm:mx-auto lg:my-8" />
         <span

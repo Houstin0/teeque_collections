@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import productsData from "../db.json";
-import ProductCard from "../components/productCard";
-import Carousel from "../components/carousel";
-import MobileCarousel from "../components/MobileCarousel";
+import Carousel from "../components/UI/carousel";
 import ProductSlider from "../components/productSlider";
 
 const mockInstagramPosts = [
@@ -82,16 +80,7 @@ const mockTestimonials = [
 
 function Home() {
   const totalProducts = productsData.products.length;
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div className="flex flex-col">
@@ -103,15 +92,16 @@ function Home() {
         <h2 className="font-serif text-center text-3xl md:text-5xl font-light text-charcoal mb-4">
           Featured Collection
         </h2>
-        <p className="text-gray-700 text-xl max-w-2xl mx-auto mb-10">
+        <p className="text-black text-xl max-w-2xl mx-auto mb-10 px-4">
           Handpicked pieces that embody our vision of modern streetwear. Each
           item crafted for those who dare to stand out.
         </p>
-        {isMobile ? (
+        {/* {isMobile ? (
           <MobileCarousel products={productsData.products} />
         ) : (
           <ProductSlider productsData={productsData} />
-        )}
+        )} */}
+        <ProductSlider productsData={productsData} />
 
         <div className="flex items-center justify-center py-8">
           <button

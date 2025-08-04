@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import productsData from "../db.json";
-import ProductCard from "../components/productCard";
+import ProductCard from "../components/UI/productCard";
 
 export default function SearchResults({ searchQuery}) {
   const [searchResults, setSearchResults] = useState([]);

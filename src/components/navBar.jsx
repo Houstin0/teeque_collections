@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import productsData from "../db.json";
 import CategoryBar from "./CategoryBar";
 import { useCart } from "../context/CartContext";
@@ -156,7 +156,7 @@ export default function Navbar({ onSearch }) {
       <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-6">
         <div className="w-full flex flex-wrap items-center justify-between mx-auto">
           {/*Logo */}
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="flex flex-col items-start leading-none relative tracking-wide self-center">
               <span className="font-serif text-3xl font-bold text-black">
                 TEEQUE
@@ -165,51 +165,47 @@ export default function Navbar({ onSearch }) {
                 Collections
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Center: Nav Links */}
           <div className="hidden md:flex flex-1 justify-center space-x-12 text-gray-800 font-medium text-lg">
-            <a
-              href="/"
+            <Link to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Home
-            </a>
-            <a
-              href="/shop"
+            </Link>
+            <Link to="/shop"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Shop
-            </a>
-            <a
-              href="/about"
+            </Link>
+            <Link to="/about"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               About
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link to="/contact"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
             >
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Dropdown */}
           {menuOpen && (
             <div className="absolute top-full left-0 w-full bg-white shadow-md z-10 flex flex-col px-6 py-4 space-y-4 text-gray-800 font-medium md:hidden">
-              <a href="/" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              <Link to="/" className="hover:text-[#B88C63] hover:underline transition font-serif">
                 Home
-              </a>
-              <a href="/shop" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              </Link>
+              <Link to="/shop" className="hover:text-[#B88C63] hover:underline transition font-serif">
                 Shop
-              </a>
-              <a href="/about" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              </Link>
+              <Link to="/about" className="hover:text-[#B88C63] hover:underline transition font-serif">
                 About
-              </a>
-              <a href="/contact" className="hover:text-[#B88C63] hover:underline transition font-serif">
+              </Link>
+              <Link to="/contact" className="hover:text-[#B88C63] hover:underline transition font-serif">
                 Contact
-              </a>
+              </Link>
             </div>
           )}
 

@@ -1,11 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import productsData from "../db.json";
-import ProductCard from "../components/productCard";
+import ProductCard from "../components/UI/productCard";
 
 function CategoryPage() {
   const { category } = useParams();
   const filteredProducts = productsData.products.filter((product) =>
-    product.categories.includes(category)
+    product.category.includes(category)
   );
 
   return (
