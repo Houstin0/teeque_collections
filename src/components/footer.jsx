@@ -1,6 +1,8 @@
-import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-export default function Footer() {
+import React, { useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { Instagram, Twitter, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+
+const Footer = () => {
   useEffect(() => {
     const yearElement = document.getElementById("currentYear");
     if (yearElement) {
@@ -14,11 +16,53 @@ export default function Footer() {
     });
   };
 
+
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for subscribing! Check your email for a 10% off coupon.');
+  };
+
   return (
-    <footer className="bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100">
-      <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-   <div className="sm:flex sm:items-center sm:justify-between">
-  <a href="/" className="flex items-center">
+    <footer className="bg-charcoal text-soft-gray">
+      {/* Newsletter Section */}
+      <div className="border-b border-warm-gray">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center max-w-md mx-auto">
+            <h3 className="font-serif text-2xl text-cream-white mb-4">
+              Stay In Style
+            </h3>
+            <p className="text-sm mb-6 tracking-wide">
+              Subscribe to get special offers, exclusive drops, and the latest updates.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 bg-warm-gray border border-warm-gray rounded-md px-3 py-2 text-cream-white placeholder:text-soft-gray focus:outline-none focus:ring-2 focus:ring-warm-sage"
+                required
+              />
+              <button 
+                type="submit"
+                className="bg-warm-sage hover:bg-opacity-90 text-cream-white px-6 py-2 rounded-md transition"
+              >
+                Subscribe
+              </button>
+            </form>
+            <p className="text-xs mt-3 text-warm-gray">
+              Get 10% off your first order when you subscribe
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+  <Link to="/" className="flex items-center">
     <div
       style={{ fontFamily: "'Cormorant Garamond', serif" }}
       className="flex flex-col items-start leading-none relative tracking-wide self-center"
@@ -28,16 +72,12 @@ export default function Footer() {
         Collections
       </span>
     </div>
-  </a>
-
-        <ul className="flex justify-center space-x-3 mt-4">
-          <h3 className="font-semibold text-black">Follow Us on:</h3>
-
-          <a
-            href="#"
-            className="text-black hover:text-gray-500"
-          >
-            <svg
+  </Link>
+            </div>
+ 
+            <div className="flex space-x-3">
+              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+                         <svg
               className="w-5 h-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,35 +93,9 @@ export default function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-
-            <span className="sr-only">Instagram page</span>
-          </a>
-
-          <a
-            href="#"
-            className="text-black hover:text-gray-500 ms-5"
-          >
-            <svg
-              className="w-4 h-4"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 8 19"
-            >
-              <path
-                fillRule="evenodd"
-                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="sr-only">Facebook page</span>
-          </a>
-
-          <a
-            href="#"
-            className="text-black hover:text-gray-500 ms-5"
-          >
-            <svg
+              </button>
+              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+                            <svg
               className="w-4 h-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -94,44 +108,130 @@ export default function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="sr-only">Twitter page</span>
-          </a>
-        </ul>
+              </button>
+              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+                           <svg
+              className="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 8 19"
+            >
+              <path
+                fillRule="evenodd"
+                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                clipRule="evenodd"
+              />
+            </svg>
+              </button>
+            </div>
+          </div>
 
-  {/* Nav Links */}
-<ul className="flex flex-wrap items-center my-6 text-sm font-medium sm:mb-0 text-black justify-end w-full sm:w-auto">
-    <li>
-      <NavLink
-        to="/"
-        onClick={scrollToTop}
-        className="hover:underline me-4 md:me-6"
-      >
-        About
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        to="/"
-        onClick={scrollToTop}
-        className="hover:underline"
-      >
-        Contact
-      </NavLink>
-    </li>
-  </ul>
-</div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Shop All', href: '/shop' },
+                { name: 'New Arrivals', href: '/shop?filter=new' },
+                { name: 'Collections', href: '/collections' },
+                { name: 'Sale', href: '/shop?filter=sale' },
+                { name: 'Gift Cards', href: '/gift-cards' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.href}
+                    className="text-sm hover:text-warm-sage transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          {/* Customer Care */}
+          <div>
+            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+              Customer Care
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Contact Us', href: '/contact' },
+                { name: 'Size Guide', href: '/size-guide' },
+                { name: 'Shipping Info', href: '/shipping' },
+                { name: 'Returns', href: '/returns' },
+                { name: 'FAQ', href: '/faq' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.href}
+                    className="text-sm hover:text-warm-sage transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+              Get In Touch
+            </h4>
+            <div className="space-y-3">
+              <div className="flex items-start space-x-3">
+                <MapPin size={16} className="text-warm-sage mt-1 flex-shrink-0" />
+                <p className="text-sm">
+                  {/* 123 Fashion Street<br /> */}
+                  Nairobi, Kenya
+                </p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone size={16} className="text-warm-sage flex-shrink-0" />
+                <p className="text-sm"> 0757 166 412</p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail size={16} className="text-warm-sage flex-shrink-0" />
+                <p className="text-sm">hello@teequecollection.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      {/* Separator */}
+      <div className="h-px w-full bg-warm-gray"></div>
 
-        <hr className="my-6 border-black sm:mx-auto lg:my-8" />
-        <span
+      {/* Bottom Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-sm text-warm-gray">
+                   <span
           id="currentYear"
           className="block text-sm text-black sm:text-center "
         >
           {" "}
         </span>
+          </p>
+          <div className="flex space-x-6">
+            <Link to="/privacy" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">
+              Terms of Service
+            </Link>
+            {/* <Link to="/cookies" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">
+              Cookie Policy
+            </Link> */}
+          </div>
+        </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
