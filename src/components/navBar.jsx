@@ -225,7 +225,7 @@ export default function Navbar({ onSearch }) {
           </Link>
 
           {/* Center: Nav Links */}
-          <div className="hidden md:flex flex-1 justify-center space-x-12 text-gray-800 font-medium text-lg">
+          <div className="hidden md:flex flex-1 justify-center space-x-10 text-gray-800 font-medium text-lg">
             <Link
               to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
@@ -255,7 +255,7 @@ export default function Navbar({ onSearch }) {
               id="theme-toggle"
               type="button"
               onClick={toggleDarkMode}
-              className="text-gray-500 dark:text-gray-400 lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700 rounded-lg p-1"
+              className="text-black lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700 rounded-lg p-1"
             >
               <svg
                 id="theme-toggle-dark-icon"
@@ -266,19 +266,13 @@ export default function Navbar({ onSearch }) {
               >
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
               </svg>
-              <svg
-                id="theme-toggle-light-icon"
-                className="hidden w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM16 10a1 1 0 110 2h-1a1 1 0 110-2h1zM5.05 4.464l.707-.707a1 1 0 00-1.414-1.414l-.707.707a1 1 0 101.414 1.414zM4.293 15.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 10a1 1 0 100 2H3a1 1 0 100-2h1zm6 6a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z"
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
+
+              <svg className="w-6 h-6 text-gray-400"
+                          id="theme-toggle-light-icon"aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
+</svg>
+
+
             </button>
           </div>
 
@@ -313,6 +307,53 @@ export default function Navbar({ onSearch }) {
               >
                 Contact
               </Link>
+                          {/* Dark mode toggle button */}
+ <button
+                        onClick={toggleDarkMode}
+                        className="hover:text-[#B88C63] hover:underline transition font-serif"
+                      >
+                        {/* Moon icon for dark mode */}
+                        <svg
+                          className={`w-6 h-6 mr-2 text-gray-800 dark:text-white ${
+                            isDarkMode ? "hidden" : "inline-block"
+                          }`}
+                          id="theme-toggle-dark-icon"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {/* Sun icon for light mode */}
+                        <svg
+                          className={`w-6 h-6 mr-2 text-gray-800 dark:text-white ${
+                            isDarkMode ? "inline-block" : "hidden"
+                          }`}
+                          id="theme-toggle-light-icon"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                          />
+                        </svg>
+                        {isDarkMode ? "Light Mode" : "Dark Mode"}
+                      </button>
             </div>
           )}
 
