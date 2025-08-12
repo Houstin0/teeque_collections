@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import productsData from "../db.json";
 import Carousel from "../components/UI/carousel";
 import ProductSlider from "../components/productSlider";
@@ -96,16 +97,10 @@ function Home() {
           Handpicked pieces that embody our vision of modern streetwear. Each
           item crafted for those who dare to stand out.
         </p>
-        {/* {isMobile ? (
-          <MobileCarousel products={productsData.products} />
-        ) : (
-          <ProductSlider productsData={productsData} />
-        )} */}
         <ProductSlider productsData={productsData} />
 
         <div className="flex items-center justify-center py-8">
-          <button
-            type="button"
+          <Link to="/shop"
             className="flex items-center gap-2 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-base px-5 py-2.5 text-center me-2 mb-2"
           >
             View All Products
@@ -123,7 +118,7 @@ function Home() {
                 d="M19 12H5m14 0-4 4m4-4-4-4"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </section>
 

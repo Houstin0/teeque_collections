@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import productsData from "../../db.json";
 
 const Carousel = () => {
@@ -63,18 +64,16 @@ const Carousel = () => {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mt-2">
-                  <a
-                    href="#"
+                  <Link to="/shop"
                     className="inline-flex justify-center items-center py-2 px-4 sm:py-3 sm:px-5 text-sm sm:text-base font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-lg shadow"
                   >
                     Shop Now
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link to="/shop"
                     className="inline-flex justify-center items-center py-2 px-4 sm:py-3 sm:px-5 text-sm sm:text-base font-medium text-white bg-gray-600 hover:bg-gray-700 rounded-lg shadow"
                   >
-                    View Collection
-                  </a>
+                    Explore Collections
+                  </Link>
                 </div>
               </div>
             </div>

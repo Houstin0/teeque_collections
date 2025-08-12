@@ -153,10 +153,10 @@ export default function Navbar({ onSearch }) {
 
   return (
     <header>
-      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-6">
+      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 md:px-4">
         <div className="w-full flex flex-wrap items-center justify-between mx-auto">
           {/*Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center pl-3 md:pl-0">
             <div className="flex flex-col items-start leading-none relative tracking-wide self-center">
               <span className="font-serif text-3xl font-bold text-black">
                 TEEQUE
