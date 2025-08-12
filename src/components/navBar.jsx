@@ -153,10 +153,10 @@ export default function Navbar({ onSearch }) {
 
   return (
     <header>
-      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 md:px-4">
+      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-2 md:px-4">
         <div className="w-full flex flex-wrap items-center justify-between mx-auto">
           {/*Logo */}
-          <Link to="/" className="flex items-center pl-3 md:pl-0">
+          <Link to="/" className="flex items-center">
             <div className="flex flex-col items-start leading-none relative tracking-wide self-center">
               <span className="font-serif text-3xl font-bold text-black">
                 TEEQUE
@@ -360,7 +360,7 @@ export default function Navbar({ onSearch }) {
                     className="w-8 h-8"
                   />
                   {cartItemCount > 0 && (
-                    <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full flex items-center justify-center text-blaxk text-sm font-semibold">
+                    <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#EEC5A2] rounded-full flex items-center justify-center text-blaxk text-sm font-semibold">
                       {cartItemCount}
                     </span>
                   )}

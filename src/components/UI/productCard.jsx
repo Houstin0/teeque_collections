@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart();
   return (
     <div className="min-w-[300px] bg-white rounded-b-lg shadow-lg shadow-black dark:bg-gray-800 dark:border-gray-700 shrink-0">
       <Link to={`/product/${encodeURIComponent(product.title)}`}>
@@ -87,7 +89,7 @@ export default function ProductCard({ product }) {
           <span className="text-2xl font-bold text-green-600">
             Ksh {product.price}
           </span>
-          <button className="text-white bg-black hover:bg-[#EEC5A2] hover:text-black focus:ring-4 focus:outline-none font-semibold rounded-md text-sm px-5 py-2.5 font-serif">
+          <button onClick={() => addToCart(product)} className="text-white bg-black hover:bg-[#EEC5A2] hover:text-black focus:ring-4 focus:outline-none font-semibold rounded-md text-sm px-5 py-2.5 font-serif">
             Add to cart
           </button>
         </div>
