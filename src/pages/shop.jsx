@@ -146,14 +146,12 @@ const Shop = () => {
 
   const handleCategoryChange = (value) => {
     if (isMobile) {
-      // Mobile: One category only
       if (value === "all") {
         setSelectedCategories(["all"]);
       } else {
         setSelectedCategories([value]);
       }
     } else {
-      // Desktop: Multi-select
       if (value === "all") {
         setSelectedCategories(["all"]);
       } else {
@@ -200,16 +198,31 @@ const Shop = () => {
 
   return (
     <div>
-      {/* Mobile CategoryBar */}
       {isMobile && (
-        <CategoryBar
-          selectedCategory={selectedCategories[0] || "all"}
-          onSelectCategory={handleCategoryChange}
-        />
+        <>
+          <CategoryBar
+            selectedCategory={selectedCategories[0] || "all"}
+            onSelectCategory={handleCategoryChange}
+          />
+
+          {/* Show Filters button at top-left */}
+          <button
+            onClick={() => setShowMobileFilters(true)}
+            className="fixed top-24 left-2 z-50 bg-gray-200 rounded p-1 flex flex-col items-center shadow"
+          >
+            <img
+              src="/icons/filter.png"
+              alt="Filter Icon"
+              className="w-6 h-6"
+            />
+            <span className="text-xs font-semibold">
+              Show Filters
+            </span>
+          </button>
+        </>
       )}
 
       <div className="min-h-screen bg-gray-50 pt-24 md:pt-[70px] pb-10 px-5">
-        {/* Mobile Sort */}
         {isMobile && (
           <div className="flex justify-end mb-2">
             <select
@@ -227,33 +240,23 @@ const Shop = () => {
           </div>
         )}
 
-   
+        {isMobile && showMobileFilters && (
+          <>
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              onClick={() => setShowMobileFilters(false)}
+            ></div>
 
-        {/* Mobile Filter Drawer */}
-        {isMobile && (
-          <div
-            className={`fixed inset-y-0 left-0 z-50 flex transition-transform duration-300 ${
-              showMobileFilters ? "translate-x-0" : "-translate-x-[80%]"
-            }`}
-          >
-            {/* Black Overlay */}
-            {showMobileFilters && (
-              <div
-                className="fixed inset-0 bg-black bg-opacity-50 z-40"
-                onClick={() => setShowMobileFilters(false)}
-              ></div>
-            )}
+            
+            <div className="fixed inset-y-0 left-0 bg-white w-3/4 max-w-xs h-full shadow-lg overflow-y-auto p-5 z-50">
 
-            {/* Drawer */}
-            <div className="relative bg-white w-3/4 max-w-xs h-full shadow-lg overflow-y-auto p-5 z-50">
-              {/* Filters (same content as desktop filters) */}
               <div className="flex justify-between items-center mb-4">
                 <h2 className="font-semibold text-xl">Filters</h2>
                 <button
                   onClick={clearFilters}
                   className="text-sm text-red-500 hover:underline"
                 >
-                  Clear All Filters
+                  Clear All
                 </button>
               </div>
 
@@ -261,7 +264,7 @@ const Shop = () => {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full p-2 text-gray-500 border-gray-400 border rounded mb-4"
+                className="w-full p-2 border border-gray-400 rounded mb-4"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -269,8 +272,8 @@ const Shop = () => {
               {/* Category */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
-                  onClick={() => setIsCategoryOpen((prev) => !prev)}
+                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  onClick={() => setIsCategoryOpen(!isCategoryOpen)}
                 >
                   Category
                   <span>{isCategoryOpen ? "▲" : "▼"}</span>
@@ -294,8 +297,8 @@ const Shop = () => {
               {/* Price */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
-                  onClick={() => setIsPriceOpen((prev) => !prev)}
+                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  onClick={() => setIsPriceOpen(!isPriceOpen)}
                 >
                   Price Range
                   <span>{isPriceOpen ? "▲" : "▼"}</span>
@@ -316,11 +319,11 @@ const Shop = () => {
                 )}
               </div>
 
-              {/* Size */}
+              {/* Sizes */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
-                  onClick={() => setIsSizeOpen((prev) => !prev)}
+                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  onClick={() => setIsSizeOpen(!isSizeOpen)}
                 >
                   Size
                   <span>{isSizeOpen ? "▲" : "▼"}</span>
@@ -341,11 +344,11 @@ const Shop = () => {
                 )}
               </div>
 
-              {/* Color */}
+              {/* Colors */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
-                  onClick={() => setIsColorOpen((prev) => !prev)}
+                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  onClick={() => setIsColorOpen(!isColorOpen)}
                 >
                   Color
                   <span>{isColorOpen ? "▲" : "▼"}</span>
@@ -372,29 +375,35 @@ const Shop = () => {
 
               <button
                 onClick={clearFilters}
-                className="w-full py-2 mt-2 bg-gray-300 hover:bg-[#EEC5A2] rounded"
+                className="w-full py-2 bg-gray-300 rounded"
               >
                 Clear All Filters
               </button>
             </div>
-
-            {/* Moving Filter Button */}
-            <button
-              onClick={() => setShowMobileFilters(!showMobileFilters)}
-              className="pl-5 shadow-md self-center z-50 top-0"
-            >
-              <div className="flex flex-col items-center gap-1">
-                <img
-                  src="/icons/filter.png"
-                  alt="Filter Icon"
-                  className="w-9 h-9"
-                />
-                <span className="text-xs text-center font-semibold bg-gray-200 rounded px-1">
-                  {showMobileFilters ? "Hide Filters" : "Show Filters"}
-                </span>
-              </div>
-            </button>
-          </div>
+                {/* Floating Close Button */}
+    <button
+      onClick={() => setShowMobileFilters(false)}
+      className="fixed top-80 left-[calc(75%+0.5rem)] w-12 h-12 flex items-center justify-center rounded-full transition z-50 font-bold bg-white"
+    >
+                      <svg
+                  className="me-1.5 h-8 w-8"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="#E02424"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18 17.94 6M18 18 6.06 6"
+                  />
+                </svg>
+    </button>
+          </>
         )}
 
         <div className="flex flex-col lg:flex-row gap-6 mb-10">
@@ -539,6 +548,7 @@ const Shop = () => {
           )}
 
           {/* Products Section */}
+
           <div className="flex-1">
             {!isMobile && (
               <div className="hidden lg:flex justify-between items-center mb-6">
@@ -559,7 +569,6 @@ const Shop = () => {
                 </select>
               </div>
             )}
-
             {products.length === 0 ? (
               <p className="text-center text-gray-500">
                 No products found matching your criteria.
@@ -572,8 +581,7 @@ const Shop = () => {
               </div>
             )}
           </div>
-      </div>
-
+        </div>
       </div>
     </div>
   );
