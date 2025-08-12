@@ -6,6 +6,7 @@ import { useCart } from "../context/CartContext";
 import { useMediaQuery } from "react-responsive";
 
 export default function Navbar({ onSearch }) {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { cartItems } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +25,62 @@ export default function Navbar({ onSearch }) {
   const searchRef = useRef(null);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+
+    const updatedIsDarkMode = !isDarkMode;
+
+    if (typeof window !== "undefined") {
+      const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+      const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+  
+      if (!updatedIsDarkMode) {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
+        localStorage.setItem("color-theme", "light");
+        if (themeToggleDarkIcon) themeToggleDarkIcon.classList.remove("hidden");
+        if (themeToggleLightIcon) themeToggleLightIcon.classList.add("hidden");
+      } else {
+        document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
+        if (themeToggleDarkIcon) themeToggleDarkIcon.classList.add("hidden");
+        if (themeToggleLightIcon) themeToggleLightIcon.classList.remove("hidden");
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isDark = localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      setIsDarkMode(isDark);
+
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+    const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+
+    if (themeToggleDarkIcon && themeToggleLightIcon) {
+      if (isDarkMode) {
+        themeToggleDarkIcon.classList.add("hidden");
+        themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+        themeToggleLightIcon.classList.add("hidden");
+      }
+    }
+  }, [isDarkMode]);
 
   useEffect(() => {
     // Close the search bar if clicked outside
@@ -193,6 +250,36 @@ export default function Navbar({ onSearch }) {
             >
               Contact
             </Link>
+            {/* Dark mode toggle button */}
+            <button
+              id="theme-toggle"
+              type="button"
+              onClick={toggleDarkMode}
+              className="text-gray-500 dark:text-gray-400 lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700 rounded-lg p-1"
+            >
+              <svg
+                id="theme-toggle-dark-icon"
+                className="hidden w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <svg
+                id="theme-toggle-light-icon"
+                className="hidden w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM16 10a1 1 0 110 2h-1a1 1 0 110-2h1zM5.05 4.464l.707-.707a1 1 0 00-1.414-1.414l-.707.707a1 1 0 101.414 1.414zM4.293 15.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 10a1 1 0 100 2H3a1 1 0 100-2h1zm6 6a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </button>
           </div>
 
           {/* Mobile Menu Dropdown */}

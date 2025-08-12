@@ -35,7 +35,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 overflow-x-hidden">
+      <div className="bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 dark:to-black dark:via-black overflow-x-hidden">
         <NavBar onSearch={handleSearch} />
 
         <Routes>
