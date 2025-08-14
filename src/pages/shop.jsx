@@ -14,15 +14,15 @@ function CategoryBar({ selectedCategory, onSelectCategory }) {
   ];
 
   return (
-    <div className="fixed z-10 top-[48px] left-0 w-full bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 overflow-x-auto">
+    <div className="fixed z-10 top-[48px] left-0 w-full overflow-x-auto">
       <div className="flex flex-nowrap items-center gap-2 px-2 py-2">
         {categories.map((cat) => (
           <button
             key={cat.value}
             onClick={() => onSelectCategory(cat.value)}
-            className={`mx-1 py-1 px-3 text-sm font-semibold rounded-md text-black hover:underline whitespace-nowrap ${
+            className={`mx-1 py-1 px-3 text-sm font-semibold rounded-md text-black dark:text-white hover:underline whitespace-nowrap ${
               cat.value === selectedCategory
-                ? "bg-gray-500 text-white"
+                ? "bg-gray-500 dark:bg-gray-600 text-white"
                 : "bg-transparent"
             }`}
           >
@@ -208,25 +208,25 @@ const Shop = () => {
           {/* Show Filters button at top-left */}
           <button
             onClick={() => setShowMobileFilters(true)}
-            className="fixed top-24 left-2 z-50 bg-gray-200 rounded p-1 flex flex-col items-center shadow"
+            className="fixed top-24 left-2 z-50 bg-gray-200 dark:bg-opacity-50 rounded p-1 flex flex-col items-center shadow"
           >
             <img
               src="/icons/filter.png"
               alt="Filter Icon"
               className="w-6 h-6"
             />
-            <span className="text-xs font-semibold">
+            <span className="text-xs font-semibold text-black">
               Show Filters
             </span>
           </button>
         </>
       )}
 
-      <div className="min-h-screen bg-gray-50 pt-24 md:pt-[70px] pb-10 px-5">
+      <div className="min-h-screen pt-24 md:pt-[70px] pb-10 px-5">
         {isMobile && (
           <div className="flex justify-end mb-2">
             <select
-              className="p-2 border border-gray-400 rounded"
+              className="p-2 border border-gray-400 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white"
               value={sortBy}
               onChange={(e) => {
                 setSortBy(e.target.value);
@@ -248,10 +248,10 @@ const Shop = () => {
             ></div>
 
             
-            <div className="fixed inset-y-0 left-0 bg-white w-3/4 max-w-xs h-full shadow-lg overflow-y-auto p-5 z-50">
+            <div className="fixed inset-y-0 left-0 bg-white dark:bg-black w-3/4 max-w-xs h-full shadow-lg overflow-y-auto p-5 z-50">
 
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-semibold text-xl">Filters</h2>
+                <h2 className="font-semibold text-xl text-black dark:text-white">Filters</h2>
                 <button
                   onClick={clearFilters}
                   className="text-sm text-red-500 hover:underline"
@@ -264,7 +264,7 @@ const Shop = () => {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full p-2 border border-gray-400 rounded mb-4"
+                className="w-full p-2 border border-gray-400 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-700 text-black dark:text-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -272,7 +272,7 @@ const Shop = () => {
               {/* Category */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  className="w-full flex justify-between items-center p-2 bg-gray-200 dark:bg-gray-600 text-black dark:text-white"
                   onClick={() => setIsCategoryOpen(!isCategoryOpen)}
                 >
                   Category
@@ -281,7 +281,7 @@ const Shop = () => {
                 {isCategoryOpen && (
                   <div className="mt-2 space-y-2">
                     {categories.map((c) => (
-                      <label key={c.value} className="flex items-center gap-2">
+                      <label key={c.value} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedCategories.includes(c.value)}
@@ -297,7 +297,7 @@ const Shop = () => {
               {/* Price */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  className="w-full flex justify-between items-center p-2 bg-gray-200 dark:bg-gray-600 text-black dark:text-white"
                   onClick={() => setIsPriceOpen(!isPriceOpen)}
                 >
                   Price Range
@@ -306,7 +306,7 @@ const Shop = () => {
                 {isPriceOpen && (
                   <div className="mt-2 space-y-2">
                     {priceRanges.map((p) => (
-                      <label key={p.value} className="flex items-center gap-2">
+                      <label key={p.value} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedPriceRanges.includes(p.value)}
@@ -322,7 +322,7 @@ const Shop = () => {
               {/* Sizes */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  className="w-full flex justify-between items-center p-2 bg-gray-200 dark:bg-gray-600 text-black dark:text-white"
                   onClick={() => setIsSizeOpen(!isSizeOpen)}
                 >
                   Size
@@ -331,7 +331,7 @@ const Shop = () => {
                 {isSizeOpen && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {sizes.map((size) => (
-                      <label key={size} className="flex items-center gap-2">
+                      <label key={size} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedSizes.includes(size)}
@@ -347,7 +347,7 @@ const Shop = () => {
               {/* Colors */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center p-2 bg-gray-200"
+                  className="w-full flex justify-between items-center p-2 bg-gray-200 dark:bg-gray-600 text-black dark:text-white"
                   onClick={() => setIsColorOpen(!isColorOpen)}
                 >
                   Color
@@ -356,14 +356,14 @@ const Shop = () => {
                 {isColorOpen && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {colors.map((color) => (
-                      <label key={color} className="flex items-center gap-2">
+                      <label key={color} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedColors.includes(color)}
                           onChange={() => handleColorChange(color)}
                         />
                         <span
-                          className="w-4 h-4 rounded-full border border-gray-400"
+                          className="w-4 h-4 rounded-full border border-gray-400 dark:border-gray-500"
                           style={{ backgroundColor: color }}
                         ></span>
                         {color}
@@ -375,7 +375,7 @@ const Shop = () => {
 
               <button
                 onClick={clearFilters}
-                className="w-full py-2 bg-gray-300 rounded"
+                className="w-full py-2 bg-gray-300 dark:bg-gray-600 text-black dark:text-white rounded hover:bg-gray-400 dark:hover:bg-gray-500"
               >
                 Clear All Filters
               </button>
@@ -383,7 +383,7 @@ const Shop = () => {
                 {/* Floating Close Button */}
     <button
       onClick={() => setShowMobileFilters(false)}
-      className="fixed top-80 left-[calc(75%+0.5rem)] w-12 h-12 flex items-center justify-center rounded-full transition z-50 font-bold bg-white"
+              className="fixed top-80 left-[calc(75%+0.5rem)] w-12 h-12 flex items-center justify-center rounded-full transition z-50 font-bold bg-white dark:bg-gray-700 dark:text-white"
     >
                       <svg
                   className="me-1.5 h-8 w-8"
@@ -409,9 +409,9 @@ const Shop = () => {
         <div className="flex flex-col lg:flex-row gap-6 mb-10">
           {/* Filters */}
           {(!isMobile || showMobileFilters) && (
-            <div className="w-full lg:w-1/4 bg-white p-5 rounded shadow">
+            <div className="w-full lg:w-1/4 bg-white dark:bg-black p-5 rounded shadow">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="font-semibold text-xl">Filters</h2>
+                <h2 className="font-semibold text-xl text-black dark:text-white">Filters</h2>
                 <button
                   onClick={clearFilters}
                   className="text-sm text-red-500 hover:underline"
@@ -424,7 +424,7 @@ const Shop = () => {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full p-2 text-gray-500 border-gray-400 border rounded mb-4"
+                className="w-full p-2 text-gray-500 dark:text-gray-300 border-gray-400 dark:border-gray-600 border rounded mb-4 bg-white dark:bg-gray-700"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -433,7 +433,7 @@ const Shop = () => {
               {!isMobile && (
                 <div className="mb-4">
                   <button
-                    className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
+                    className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 dark:bg-gray-600 hover:bg-[#EEC5A2] dark:hover:bg-gray-500 text-black dark:text-white"
                     onClick={() => setIsCategoryOpen((prev) => !prev)}
                   >
                     Category
@@ -444,7 +444,7 @@ const Shop = () => {
                       {categories.map((c) => (
                         <label
                           key={c.value}
-                          className="flex items-center gap-2"
+                          className="flex items-center gap-2 text-black dark:text-white"
                         >
                           <input
                             type="checkbox"
@@ -462,7 +462,7 @@ const Shop = () => {
               {/* Price Range */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
+                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2] dark:bg-gray-600 dark:hover:bg-gray-500 text-black dark:text-white"
                   onClick={() => setIsPriceOpen((prev) => !prev)}
                 >
                   Price Range
@@ -471,7 +471,7 @@ const Shop = () => {
                 {isPriceOpen && (
                   <div className="mt-2 space-y-2">
                     {priceRanges.map((p) => (
-                      <label key={p.value} className="flex items-center gap-2">
+                      <label key={p.value} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedPriceRanges.includes(p.value)}
@@ -487,7 +487,7 @@ const Shop = () => {
               {/* Sizes */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
+                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2] dark:bg-gray-600 dark:hover:bg-gray-500 text-black dark:text-white"
                   onClick={() => setIsSizeOpen((prev) => !prev)}
                 >
                   Size
@@ -496,7 +496,7 @@ const Shop = () => {
                 {isSizeOpen && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {sizes.map((size) => (
-                      <label key={size} className="flex items-center gap-2">
+                      <label key={size} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedSizes.includes(size)}
@@ -512,7 +512,7 @@ const Shop = () => {
               {/* Colors */}
               <div className="mb-4">
                 <button
-                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2]"
+                  className="w-full flex justify-between items-center font-medium p-2 bg-gray-200 hover:bg-[#EEC5A2] dark:bg-gray-600 dark:hover:bg-gray-500 text-black dark:text-white"
                   onClick={() => setIsColorOpen((prev) => !prev)}
                 >
                   Color
@@ -521,14 +521,14 @@ const Shop = () => {
                 {isColorOpen && (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {colors.map((color) => (
-                      <label key={color} className="flex items-center gap-2">
+                      <label key={color} className="flex items-center gap-2 text-black dark:text-white">
                         <input
                           type="checkbox"
                           checked={selectedColors.includes(color)}
                           onChange={() => handleColorChange(color)}
                         />
                         <span
-                          className="w-4 h-4 rounded-full border border-gray-400"
+                          className="w-4 h-4 rounded-full border border-gray-400 dark:border-gray-500"
                           style={{ backgroundColor: color }}
                         ></span>
                         {color}
@@ -540,7 +540,7 @@ const Shop = () => {
 
               <button
                 onClick={clearFilters}
-                className="w-full py-2 mt-2 bg-gray-300 hover:bg-[#EEC5A2] rounded"
+                className="w-full py-2 mt-2 bg-gray-300 hover:bg-[#EEC5A2] dark:bg-gray-600 dark:hover:bg-gray-500 rounded text-black dark:text-white"
               >
                 Clear All Filters
               </button>
@@ -552,11 +552,11 @@ const Shop = () => {
           <div className="flex-1">
             {!isMobile && (
               <div className="hidden lg:flex justify-between items-center mb-6">
-                <p className="text-black text-2xl font-serif">
+                <p className="text-black dark:text-white text-2xl font-serif">
                   Shop for your piece of Teeque
                 </p>
                 <select
-                  className="p-1 border border-gray-400 rounded hover:bg-gray-200"
+                  className="p-1 border border-gray-400 dark:border-gray-600 rounded hover:bg-gray-200 dark:hover:bg-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
                   value={sortBy}
                   onChange={(e) => {
                     setSortBy(e.target.value);
@@ -570,7 +570,7 @@ const Shop = () => {
               </div>
             )}
             {products.length === 0 ? (
-              <p className="text-center text-gray-500">
+              <p className="text-center text-gray-500 dark:text-gray-400">
                 No products found matching your criteria.
               </p>
             ) : (

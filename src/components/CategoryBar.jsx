@@ -41,7 +41,7 @@ function CategoryBar({ selectedCategory }) {
 
   return (
     <div
-      className="fixed z-10 top-[50px]  w-full bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 overflow-x-auto"
+      className="fixed z-10 top-[50px]  w-full bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 dark:from-gray-800 dark:to-gray-900 dark:via-gray-900 overflow-x-auto"
       ref={scrollRef}
     >
       <div className="flex flex-nowrap items-center gap-2 min-w-full">
@@ -49,9 +49,9 @@ function CategoryBar({ selectedCategory }) {
           <Link
             key={cat}
             to={`/category/${cat}`}
-            className={`py-2 px-4 text-sm md:text-lg font-semibold rounded-md text-black hover:underline whitespace-nowrap ${
+            className={`py-2 px-4 text-sm md:text-lg font-semibold rounded-md text-black dark:text-white hover:underline whitespace-nowrap ${
               cat === (selectedCategory || category)
-                ? "bg-gray-500 text-white"
+                ? "bg-gray-500 dark:bg-gray-600 text-white"
                 : "bg-transparent"
             }`}
           >
@@ -62,5 +62,5 @@ function CategoryBar({ selectedCategory }) {
     </div>
   );
 }
-
 export default CategoryBar;
+

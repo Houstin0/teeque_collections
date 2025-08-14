@@ -210,22 +210,22 @@ export default function Navbar({ onSearch }) {
 
   return (
     <header>
-      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 px-2 md:px-4">
+      <nav className="fixed w-full z-50 top-0 start-0 bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 dark:from-[#997D68] dark:to-black dark:via-black px-2 md:px-4">
         <div className="w-full flex flex-wrap items-center justify-between mx-auto">
           {/*Logo */}
           <Link to="/" className="flex items-center">
             <div className="flex flex-col items-start leading-none relative tracking-wide self-center">
-              <span className="font-serif text-3xl font-bold text-black">
+              <span className="font-serif text-3xl font-bold text-black dark:text-white">
                 TEEQUE
               </span>
-              <span className="font-serif text-base text-gray-900 ml-[4.25rem] mt-[-0.1rem]">
+              <span className="font-serif text-base text-gray-900 dark:text-gray-300 ml-[4.25rem] mt-[-0.1rem]">
                 Collections
               </span>
             </div>
           </Link>
 
           {/* Center: Nav Links */}
-          <div className="hidden md:flex flex-1 justify-center space-x-10 text-gray-800 font-medium text-lg">
+          <div className="hidden md:flex flex-1 justify-center space-x-10 text-gray-800 dark:text-gray-200 font-medium text-lg">
             <Link
               to="/"
               className="hover:text-[#B88C63] hover:underline transition font-serif"
@@ -255,7 +255,7 @@ export default function Navbar({ onSearch }) {
               id="theme-toggle"
               type="button"
               onClick={toggleDarkMode}
-              className="text-black lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700 rounded-lg p-1"
+              className="text-black dark:text-white lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700 rounded-lg p-1"
             >
               <svg
                 id="theme-toggle-dark-icon"
@@ -267,7 +267,7 @@ export default function Navbar({ onSearch }) {
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
               </svg>
 
-              <svg className="w-6 h-6 text-gray-400"
+              <svg className="w-6 h-6 text-gray-400 dark:text-gray-300"
                           id="theme-toggle-light-icon"aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
   <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
 </svg>
@@ -278,7 +278,7 @@ export default function Navbar({ onSearch }) {
 
           {/* Mobile Menu Dropdown */}
           {menuOpen && (
-            <div className="absolute top-full left-0 w-full bg-white shadow-md z-10 flex flex-col items-center px-6 py-4 space-y-4 text-black font-medium text-lg md:hidden">
+            <div className="absolute top-full left-0 w-full bg-white dark:bg-black shadow-md z-10 flex flex-col items-center px-6 py-4 space-y-4 text-black dark:text-white font-medium text-lg md:hidden">
               <Link
                 to="/"
                 className="hover:text-[#B88C63] hover:underline transition font-serif"
@@ -407,7 +407,7 @@ export default function Navbar({ onSearch }) {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search products..."
-                  className="pl-10 pr-4 py-2 w-64 md:w-[300px] border border-green-400  rounded-l-lg focus:outline-none bg-gray-50"
+                  className="pl-10 pr-4 py-2 w-64 md:w-[300px] border border-green-400 dark:border-green-500 rounded-l-lg focus:outline-none bg-gray-50 dark:bg-gray-700 dark:text-white"
                 />
 
                 <button
@@ -435,10 +435,10 @@ export default function Navbar({ onSearch }) {
 
                 <button
                   type="submit"
-                  className="px-4 py-2.5 bg-blue-400 rounded-r-lg"
+                  className="px-4 py-2.5 bg-blue-400 dark:bg-blue-600 rounded-r-lg"
                 >
                   <svg
-                    className="w-6 h-6 text-gray-800"
+                    className="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -457,11 +457,11 @@ export default function Navbar({ onSearch }) {
 
                 {/* Autocomplete suggestions dropdown */}
                 {isSearchVisible && (
-                  <div className="absolute w-64 md:w-[300px] bg-gray-50 border border-green-400 shadow-lg z-20 left-0 top-full max-h-64 overflow-y-auto">
+                  <div className="absolute w-64 md:w-[300px] bg-gray-50 dark:bg-gray-700 border border-green-400 dark:border-green-500 shadow-lg z-20 left-0 top-full max-h-64 overflow-y-auto">
                     {searchSuggestions.map((suggestion, index) => (
                       <div
                         key={index}
-                        className="px-4 py-2 cursor-pointer hover:bg-green-400"
+                        className="px-4 py-2 cursor-pointer hover:bg-green-400 dark:hover:bg-green-600 dark:text-white"
                         onClick={() => {
                           setSearchQuery(suggestion);
                           onSearch(suggestion);
@@ -536,7 +536,7 @@ export default function Navbar({ onSearch }) {
                 ) : (
                   // Hamburger Icon
                   <svg
-                    className="w-10 h-10 text-black"
+                    className="w-10 h-10 text-black dark:text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -559,7 +559,7 @@ export default function Navbar({ onSearch }) {
       {/* Mobile Search Popup */}
       {isMobileSearchVisible && (
         <div className="fixed inset-0 top-[98px] z-50 flex p-2 justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded-lg w-11/12 max-w-lg relative">
+          <div className="bg-white dark:bg-black p-4 rounded-lg w-11/12 max-w-lg relative">
             <button
               type="button"
               onClick={toggleMobileSearch}
@@ -589,15 +589,15 @@ export default function Navbar({ onSearch }) {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search products..."
-                  className="w-full py-2 pl-4 pr-10 border border-green-400 rounded-l-lg focus:outline-none bg-gray-50"
+                  className="w-full py-2 pl-4 pr-10 border border-green-400 dark:border-green-500 rounded-l-lg focus:outline-none bg-gray-50 dark:bg-gray-700 dark:text-white"
                 />
               </div>
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-blue-400  rounded-r-lg"
+                className="px-4 py-2.5 bg-blue-400 dark:bg-blue-600 rounded-r-lg"
               >
                 <svg
-                  className="w-6 h-6 text-gray-800"
+                  className="w-6 h-6 text-gray-800 dark:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -616,11 +616,11 @@ export default function Navbar({ onSearch }) {
 
               {/* Add suggestions for mobile */}
               {searchSuggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 bg-gray-50 border border-gray-100 rounded-b-lg max-h-[430px] overflow-y-auto z-50">
+                <div className="absolute top-full left-0 right-0 bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-b-lg max-h-[430px] overflow-y-auto z-50">
                   {searchSuggestions.map((suggestion, index) => (
                     <div
                       key={index}
-                      className="px-4 py-2 cursor-pointer hover:bg-green-400"
+                      className="px-4 py-2 cursor-pointer hover:bg-green-400 dark:hover:bg-green-600 dark:text-white"
                       onClick={() => {
                         setSearchQuery(suggestion);
                         onSearch(suggestion);

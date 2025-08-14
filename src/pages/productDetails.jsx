@@ -49,8 +49,8 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-cream-white flex items-center justify-center">
-        <p>Product not found</p>
+      <div className="min-h-screen bg-cream-white dark:bg-gray-900 flex items-center justify-center">
+        <p className="text-black dark:text-white">Product not found</p>
       </div>
     );
   }
@@ -94,11 +94,11 @@ function ProductDetails() {
   ];
 
   return (
-    <div className="min-h-screen bg-cream-white">
+    <div className="min-h-screen bg-gradient-to-r from-[#EEC5A2] to-gray-100 via-gray-100 dark:from-[#997D68] dark:to-black dark:via-black">
       {/* Breadcrumb */}
-      <div className="bg-soft-gray py-4">
+      <div className="bg-soft-gray dark:bg-gray-800 py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center space-x-2 text-sm text-warm-gray">
+          <div className="flex items-center space-x-2 text-sm text-warm-gray dark:text-gray-300">
             <Link to="/" className="hover:text-warm-sage">
               Home
             </Link>
@@ -107,7 +107,7 @@ function ProductDetails() {
               Shop
             </Link>
             <span>/</span>
-            <span className="text-charcoal">{product.title}</span>
+            <span className="text-charcoal dark:text-white">{product.title}</span>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ function ProductDetails() {
         {/* Back Button */}
         <Link
           to="/shop"
-          className="mb-8 inline-flex items-center space-x-2 text-warm-gray hover:text-charcoal"
+          className="mb-8 inline-flex items-center space-x-2 text-warm-gray dark:text-white font-bold hover:text-charcoal dark:hover:text-white"
         >
           <ArrowLeft size={16} />
           <span>Back to Shop</span>
@@ -125,7 +125,7 @@ function ProductDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-square overflow-hidden rounded-lg bg-soft-gray">
+            <div className="aspect-square overflow-hidden rounded-lg bg-soft-gray dark:bg-gray-700">
               <img
                 src={productImages[currentImage] || product.image}
                 alt={product.title}
@@ -143,7 +143,7 @@ function ProductDetails() {
                     className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
                       currentImage === i
                         ? "border-warm-sage"
-                        : "border-soft-gray"
+                        : "border-soft-gray dark:border-gray-600"
                     }`}
                   >
                     <img
@@ -160,13 +160,13 @@ function ProductDetails() {
           {/* Product Info */}
           <div className="space-y-6">
             <div className="flex items-start justify-between mb-2">
-              <h1 className="font-serif text-3xl font-light text-charcoal">
+              <h1 className="font-serif text-3xl font-light text-charcoal dark:text-white">
                 {product.title}
               </h1>
               <button
                 onClick={() => setIsWishlisted(!isWishlisted)}
                 className={`${
-                  isWishlisted ? "text-warm-sage" : "text-warm-gray"
+                  isWishlisted ? "text-warm-sage" : "text-warm-gray dark:text-gray-400"
                 } hover:text-warm-sage`}
                 aria-pressed={isWishlisted}
               >
@@ -178,7 +178,7 @@ function ProductDetails() {
             </div>
 
             <div className="flex items-center space-x-3 mb-4">
-              <span className="text-2xl font-medium text-warm-sage">
+              <span className="text-2xl font-medium text-warm-sage dark:text-green-400">
                 Ksh.{product.price}
               </span>
             </div>
@@ -203,17 +203,17 @@ function ProductDetails() {
                   </svg>
                 ))}
               </div>
-              <span className="text-sm text-warm-gray">
+              <span className="text-sm text-warm-gray dark:text-gray-100">
                 ({product.rating.toFixed(1) || 0} rating)
               </span>
             </div>
 
-            <p className="text-warm-gray">{product.description}</p>
+            <p className="text-warm-gray dark:text-gray-300">{product.description}</p>
 
             {/* Size Selection */}
             {product.sizes && (
               <div>
-                <label className="text-sm font-medium text-charcoal mb-3 block uppercase">
+                <label className="text-sm font-medium text-charcoal dark:text-white mb-3 block uppercase">
                   Size
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -221,10 +221,10 @@ function ProductDetails() {
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 border rounded-md text-sm font-medium ${
+                      className={`px-4 py-2 border-2 rounded-md text-sm  ${
                         selectedSize === size
-                          ? "border-warm-sage bg-warm-sage text-cream-white"
-                          : "border-soft-gray text-charcoal hover:border-warm-sage"
+                          ? "border-black dark:border-white bg-warm-sage font-bold text-black dark:text-[#EEC5A2]"
+                          : "border-gray-300 dark:border-gray-600 font-medium text-charcoal dark:text-white hover:border-warm-sage"
                       }`}
                     >
                       {size}
@@ -237,9 +237,9 @@ function ProductDetails() {
             {/* Color Selection */}
             {product.colors && (
               <div>
-                <label className="text-sm font-medium text-charcoal mb-3 block uppercase">
+                <label className="text-sm font-medium text-charcoal dark:text-white mb-3 block uppercase">
                   Color:{" "}
-                  <span className="font-normal text-warm-gray">
+                  <span className="font-normal text-warm-gray dark:text-gray-400">
                     {selectedColor}
                   </span>
                 </label>
@@ -248,10 +248,10 @@ function ProductDetails() {
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-10 h-10 rounded-full border-2 ${
+                      className={`w-10 h-10 rounded-full border ${
                         selectedColor === color
-                          ? "border-warm-sage"
-                          : "border-soft-gray"
+                          ? "border-4 border-gray-600 dark:border-white"
+                          : "border-gray-600 dark:border-gray-200"
                       }`}
                       style={{ backgroundColor: color }}
                       title={color}
@@ -265,25 +265,25 @@ function ProductDetails() {
             {/* Quantity & Add to Cart */}
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-medium text-charcoal mb-3 block uppercase">
+                <label className="text-sm font-medium text-charcoal dark:text-white mb-3 block uppercase">
                   Quantity
                 </label>
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => handleQuantityChange(-1)}
                     disabled={quantity <= 1}
-                    className="px-3 py-1 border rounded-md hover:bg-gray-100 disabled:opacity-50"
+                    className="px-3 py-1 border rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     aria-label="Decrease quantity"
                   >
                     <Minus size={16} />
                   </button>
-                  <span className="text-lg font-medium w-12 text-center">
+                  <span className="text-lg font-medium w-12 text-center dark:text-white">
                     {quantity}
                   </span>
                   <button
                     onClick={() => handleQuantityChange(1)}
                     disabled={quantity >= 10}
-                    className="px-3 py-1 border rounded-md hover:bg-gray-100 disabled:opacity-50"
+                    className="px-3 py-1 border rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     aria-label="Increase quantity"
                   >
                     <Plus size={16} />
@@ -294,9 +294,9 @@ function ProductDetails() {
               <div className="flex space-x-4">
                 <button
                   onClick={handleAddToCart}
-                  className={`flex-1 px-4 py-2 rounded-md text-cream-white flex items-center justify-center ${
+                  className={`flex-1 px-4 py-2 rounded-md border dark:border-gray-500 flex font-semibold items-center justify-center ${
                     product.instock
-                      ? "bg-warm-sage hover:bg-warm-sage/90"
+                      ? "bg-black hover:bg-[#EEC5A2] hover:text-black text-white dark:bg-gray-700 dark:hover:bg-[#997D68] dark:hover:text-black"
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                   disabled={!product.instock}
@@ -306,7 +306,7 @@ function ProductDetails() {
                 </button>
 
                 <button
-                  className="px-4 py-2 rounded-md border hover:bg-gray-100"
+                  className="px-4 py-2 rounded-md border bg-black font-semibold text-white hover:bg-[#EEC5A2] dark:hover:bg-[#997D68] dark:hover:text-black dark:border-gray-500 dark:bg-gray-700 dark:text-white"
                   onClick={() => alert("Buy now flow not implemented")}
                 >
                   Buy Now
@@ -315,16 +315,16 @@ function ProductDetails() {
             </div>
 
             {/* Benefits */}
-            <div className="space-y-3 pt-6 border-t border-soft-gray">
-              <div className="flex items-center space-x-3 text-sm text-warm-gray">
+            <div className="space-y-3 pt-6 border-t border-soft-gray dark:border-gray-700">
+              <div className="flex items-center space-x-3 text-sm text-warm-gray dark:text-gray-300">
                 <Truck size={16} className="text-warm-sage" />
                 <span>Free shipping on orders over Ksh.5000</span>
               </div>
-              <div className="flex items-center space-x-3 text-sm text-warm-gray">
+              <div className="flex items-center space-x-3 text-sm text-warm-gray dark:text-gray-300">
                 <RotateCcw size={16} className="text-warm-sage" />
                 <span>30-day return policy</span>
               </div>
-              <div className="flex items-center space-x-3 text-sm text-warm-gray">
+              <div className="flex items-center space-x-3 text-sm text-warm-gray dark:text-gray-300">
                 <Shield size={16} className="text-warm-sage" />
                 <span>1-year warranty included</span>
               </div>
@@ -340,8 +340,8 @@ function ProductDetails() {
                 onClick={() => setActiveTab("reviews")}
                 className={`py-2 text-sm font-medium ${
                   activeTab === "reviews"
-                    ? "border-b-2 border-black text-charcoal"
-                    : "text-warm-gray"
+                    ? "border-b-2 border-black dark:border-white text-charcoal dark:text-white"
+                    : "text-warm-gray dark:text-gray-400"
                 }`}
               >
                 Reviews ({sampleReviews.length})
@@ -351,8 +351,8 @@ function ProductDetails() {
                 onClick={() => setActiveTab("care")}
                 className={`py-2 text-sm font-medium ${
                   activeTab === "care"
-                    ? "border-b-2 border-warm-sage text-charcoal"
-                    : "text-warm-gray"
+                    ? "border-b-2 border-warm-sage text-charcoal dark:text-white"
+                    : "text-warm-gray dark:text-gray-400"
                 }`}
               >
                 Care Instructions
@@ -361,15 +361,15 @@ function ProductDetails() {
 
             <div className="mt-8">
               {activeTab === "reviews" && (
-                <div className="bg-white rounded-lg shadow-sm p-8">
-                  <h3 className="font-serif text-xl font-light text-charcoal mb-4">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8">
+                  <h3 className="font-serif text-xl font-light text-charcoal dark:text-white mb-4">
                     Customer Reviews
                   </h3>
                   <div className="space-y-6">
                     {sampleReviews.map((review, index) => (
                       <div
                         key={index}
-                        className="border-b border-soft-gray pb-4 last:border-b-0"
+                        className="border-b border-soft-gray dark:border-gray-700 pb-4 last:border-b-0"
                       >
                         <div className="flex items-center space-x-2 mb-2">
                           <div className="flex space-x-1">
@@ -390,11 +390,11 @@ function ProductDetails() {
                               </svg>
                             ))}
                           </div>
-                          <span className="font-medium text-charcoal">
+                          <span className="font-medium text-charcoal dark:text-white">
                             {review.name}
                           </span>
                         </div>
-                        <p className="text-warm-gray text-sm">
+                        <p className="text-warm-gray dark:text-gray-300 text-sm">
                           {review.review}
                         </p>
                       </div>
@@ -404,11 +404,11 @@ function ProductDetails() {
               )}
 
               {activeTab === "care" && (
-                <div className="bg-white rounded-lg shadow-sm p-8">
-                  <h3 className="font-serif text-xl font-light text-charcoal mb-4">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8">
+                  <h3 className="font-serif text-xl font-light text-charcoal dark:text-white mb-4">
                     Care Instructions
                   </h3>
-                  <div className="space-y-4 text-warm-gray">
+                  <div className="space-y-4 text-warm-gray dark:text-gray-300">
                     <p>
                       <strong>Washing:</strong> Machine wash cold with like
                       colors. Use gentle cycle.
@@ -439,7 +439,7 @@ function ProductDetails() {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-16">
-            <h2 className="font-serif text-3xl font-light text-charcoal mb-8 text-center">
+            <h2 className="font-serif text-3xl font-light text-charcoal dark:text-white mb-8 text-center">
               You Might Also Like
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

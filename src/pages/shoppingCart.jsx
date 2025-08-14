@@ -37,7 +37,7 @@ function ShoppingCart() {
           <li className="inline-flex items-center">
             <button
               onClick={() => navigate("/shop")}
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white hover:underline"
+              className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline"
             >
               <svg
                 className="w-3 h-3 me-2.5"
@@ -94,15 +94,15 @@ function ShoppingCart() {
         </ol>
       </nav>
 
-      <h2 className="text-2xl text-center font-bold mb-4">Shopping Cart</h2>
+      <h2 className="text-2xl text-center font-bold mb-4 text-black dark:text-white">Shopping Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-black dark:text-white">Your cart is empty.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {cartItems.map((item) => (
             <li
               key={item.id}
-              className="list-none rounded-lg border border-gray-200 bg-blue-100 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6"
+              className="list-none rounded-lg border border-gray-200 bg-blue-100 dark:bg-gray-800 p-4 shadow-sm dark:border-gray-700 md:p-6"
             >
               <div className="flex items-center justify-between gap-4">
                 {/* Image */}
@@ -196,7 +196,7 @@ function ShoppingCart() {
         </div>
       )}
       <div className="mx-auto mt-6 max-w-full flex-1 space-y-6 ">
-        <div className="space-y-4 rounded-lg border border-gray-200 bg-blue-100 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+        <div className="space-y-4 rounded-lg border border-gray-200 bg-blue-100 dark:bg-gray-800 p-4 shadow-sm dark:border-gray-700 sm:p-6">
           <p className="text-xl font-semibold text-gray-900 dark:text-white">
             Order summary
           </p>
@@ -258,7 +258,7 @@ function ShoppingCart() {
                 <img className="mx-auto hidden h-44 w-44 dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="imac image" />
               </a>
               <div>
-                <a href="#" className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">iMac 27”</a>
+                <a href="#" className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">iMac 27"</a>
                 <p className="mt-2 text-base font-normal text-gray-500 dark:text-gray-400">This generation has some improvements, including a longer continuous battery life.</p>
               </div>
               <div>

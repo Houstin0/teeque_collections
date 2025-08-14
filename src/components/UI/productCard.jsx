@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   return (
-    <div className="min-w-[300px] bg-white rounded-b-lg shadow-lg shadow-black dark:bg-gray-800 dark:border-gray-700 shrink-0">
+    <div className="min-w-[300px] bg-white dark:bg-black rounded-b-lg shadow-lg shadow-black dark:shadow-gray-900 dark:border-gray-700 shrink-0">
       <Link to={`/product/${encodeURIComponent(product.title)}`}>
         <img
           src={product.image}
@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
         />
       </Link>
 
-      <div className="p-4 pt-1">
+      <div className="p-4 ">
         {/* Title */}
         <Link to={`/product/${encodeURIComponent(product.title)}`}>
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white hover:underline font-serif">
@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
 
         {/* Category + Rating */}
         <div className="flex items-center justify-between my-2">
-          <p className="text-sm text-black capitalize">
+          <p className="text-sm text-black dark:text-gray-300 capitalize">
             {Array.isArray(product.category)
               ? product.category.join(", ")
               : product.category}
@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
                 </svg>
               ))}
             </div>
-            <span className="text-blue-800 text-xs font-semibold ms-1">
+            <span className="text-blue-800 dark:text-blue-400 text-xs font-semibold ms-1">
               {product.rating.toFixed(1)}
             </span>
           </div>
@@ -57,11 +57,11 @@ export default function ProductCard({ product }) {
         {/* Colors */}
         {product.colors?.length > 0 && (
           <div className="flex items-center space-x-2 mb-2">
-            <span className="text-xs text-gray-500">Colors:</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">Colors:</span>
             {product.colors.map((color, i) => (
               <span
                 key={i}
-                className="w-3 h-3 rounded-full border border-black"
+                className="w-3 h-3 rounded-full border border-black dark:border-gray-300"
                 style={{ backgroundColor: color }}
                 title={color}
               ></span>
@@ -72,11 +72,11 @@ export default function ProductCard({ product }) {
         {/* Sizes */}
         {product.sizes?.length > 0 && (
           <div className="flex items-center space-x-1 mb-4">
-            <span className="text-xs text-gray-500">Sizes:</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">Sizes:</span>
             {product.sizes.map((size, i) => (
               <span
                 key={i}
-                className="px-1.5 py-0.5 text-xs border border-gray-300 rounded"
+                className="px-1.5 py-0.5 text-xs border border-gray-300 dark:border-gray-600 rounded dark:text-gray-300"
               >
                 {size}
               </span>
@@ -86,10 +86,10 @@ export default function ProductCard({ product }) {
 
         {/* Price + Add to Cart */}
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-green-600">
+          <span className="text-2xl font-bold text-green-600 dark:text-green-400">
             Ksh {product.price}
           </span>
-          <button onClick={() => addToCart(product)} className="text-white bg-black hover:bg-[#EEC5A2] hover:text-black focus:ring-4 focus:outline-none font-semibold rounded-md text-sm px-5 py-2.5 font-serif">
+          <button onClick={() => addToCart(product)} className="text-white bg-black hover:bg-[#EEC5A2] hover:text-black focus:ring-4 focus:outline-none font-semibold rounded-md text-sm px-5 py-2.5 font-serif dark:bg-gray-700 dark:hover:bg-[#997D68]">
             Add to cart
           </button>
         </div>

@@ -56,7 +56,7 @@ function Checkout() {
           <li className="inline-flex items-center">
             <button
               onClick={() => navigate("/")}
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
               <svg
                 className="w-3 h-3 me-2.5"
@@ -73,10 +73,10 @@ function Checkout() {
           <li className="inline-flex items-center">
             <button
               onClick={() => navigate("/shoppingCart")}
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-white dark:hover:text-blue-600"
+              className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
               <svg
-                className="rtl:rotate-180 w-3 h-3 text-gray-700 mx-1"
+                className="rtl:rotate-180 w-3 h-3 text-gray-700 dark:text-gray-300 mx-1"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -136,10 +136,10 @@ function Checkout() {
         </ol>
       </nav>
 
-      <h2 className="text-2xl text-center font-bold mb-4 ">Checkout</h2>
+      <h2 className="text-2xl text-center font-bold mb-4 text-black dark:text-white">Checkout</h2>
 
       <div className="flex flex-col sm:flex-row gap-4  p-2">
-        <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 sm:w-1/2">
+        <div className="space-y-4 rounded-lg border border-gray-200 bg-white dark:bg-gray-800 p-4 shadow-sm dark:border-gray-700 sm:p-6 sm:w-1/2">
           <p className="text-xl font-semibold text-gray-900 dark:text-white">
             Order summary
           </p>
@@ -179,7 +179,7 @@ function Checkout() {
           </div>
         </div>
 
-        <div className="bg-gray-50 text-blue-800 p-4 rounded my-1 sm:w-1/2">
+        <div className="bg-gray-50 dark:bg-gray-700 text-blue-800 dark:text-blue-400 p-4 rounded my-1 sm:w-1/2">
           <p className="text-center font-semibold">Payment methods</p>
           <ul className="list-disc list-inside">
             <li>Cash on delivery (Nairobi delivery)</li>
@@ -189,7 +189,7 @@ function Checkout() {
       </div>
 
       {/* User Information Form */}
-      <div className="mt-4 space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="mt-4 space-y-4 rounded-lg border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm dark:border-gray-700">
         <form onSubmit={handleSubmit}>
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
@@ -205,7 +205,7 @@ function Checkout() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="First name"
                 required
               />
@@ -223,7 +223,7 @@ function Checkout() {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Last name"
                 required
               />
@@ -241,7 +241,7 @@ function Checkout() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0712345678"
                 pattern="[0-9]{10}"
                 required
@@ -260,7 +260,7 @@ function Checkout() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter your Email address"
                 required
               />
@@ -279,7 +279,7 @@ function Checkout() {
                 name="location"
                 value={formData.location}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter your location"
                 required
               />
@@ -296,7 +296,7 @@ function Checkout() {
                 name="paymentOption"
                 value={formData.paymentOption}
                 onChange={handleInputChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               >
                 <option value="" disabled>

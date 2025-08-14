@@ -64,7 +64,7 @@ const mockTestimonials = [
     name: "Michael Kimani",
     location: "Mombasa, Kenya",
     review:
-      "Their message and fashion truly inspire me. It’s more than just apparel.",
+      "Their message and fashion truly inspire me. It's more than just apparel.",
     rating: 4,
     image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
@@ -90,10 +90,10 @@ function Home() {
 
       {/* Featured */}
       <section id="products" className="w-full py-14">
-        <h2 className="font-serif text-center text-3xl md:text-5xl font-light text-charcoal mb-4">
+        <h2 className="font-serif text-center text-3xl md:text-5xl font-light text-charcoal dark:text-white mb-4">
           Featured Collection
         </h2>
-        <p className="text-black text-xl max-w-2xl mx-auto mb-10 px-4">
+        <p className="text-black dark:text-gray-300 text-xl max-w-2xl mx-auto mb-10 px-4">
           Handpicked pieces that embody our vision of modern streetwear. Each
           item crafted for those who dare to stand out.
         </p>
@@ -101,11 +101,11 @@ function Home() {
 
         <div className="flex items-center justify-center py-8">
           <Link to="/shop"
-            className="flex items-center gap-2 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-base px-5 py-2.5 text-center me-2 mb-2"
+            className="flex items-center gap-2 text-black bg-gradient-to-l from-[#EEC5A2] to-[#997D68] hover:bg-gradient-to-r focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2"
           >
             View All Products
             <svg
-              className="w-8 h-8 text-white" // you can change color/size here
+              className="w-8 h-8"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -126,31 +126,7 @@ function Home() {
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-6">
-                More Than Fashion
-              </h2>
-              <p className="text-warm-gray text-lg leading-relaxed mb-6">
-                At Teeque Collection, we believe clothing is a language. Every
-                thread tells a story, every design speaks to the soul. We create
-                pieces that don't just look good – they feel authentic to who
-                you are.
-              </p>
-              <p className="text-warm-gray text-lg leading-relaxed mb-8">
-                From the bustling streets of urban centers to the quiet corners
-                of creativity, our designs are inspired by real people living
-                real lives, making real statements.
-              </p>
-              {/* <Button 
-              asChild
-              className="bg-warm-sage hover:bg-warm-sage/90 text-cream-white"
-            >
-              <Link to="/about" className="flex items-center space-x-2">
-                <span>Our Story</span>
-                <ArrowRight size={16} />
-              </Link>
-            </Button> */}
-            </div>
+
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&h=400&fit=crop"
@@ -163,24 +139,49 @@ function Home() {
                 className="w-full h-64 object-cover rounded-lg shadow-lg mt-8"
               />
             </div>
+            <div>
+              <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal dark:text-white mb-6">
+                More Than Fashion
+              </h2>
+              <p className="text-black dark:text-gray-100 text-lg leading-relaxed mb-6">
+                At Teeque Collection, we believe clothing is a language. Every
+                thread tells a story, every design speaks to the soul. We create
+                pieces that don't just look good – they feel authentic to who
+                you are.
+              </p>
+              <p className="text-black dark:text-gray-100 text-lg leading-relaxed mb-8">
+                From the bustling streets of urban centers to the quiet corners
+                of creativity, our designs are inspired by real people living
+                real lives, making real statements.
+              </p>
+              {/* <Button   
+              asChild
+              className="bg-warm-sage hover:bg-warm-sage/90 text-cream-white"
+            >
+              <Link to="/about" className="flex items-center space-x-2">
+                <span>Our Story</span>
+                <ArrowRight size={16} />
+              </Link>
+            </Button> */}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Social media */}
-      <section className="py-20 bg-charcoal">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal dark:text-white mb-4">
               What They Say
             </h2>
-            <p className="text-soft-gray text-lg mb-8">
+            <p className="text-soft-gray dark:text-gray-300 text-lg mb-8">
               Follow us for daily style inspiration and behind-the-scenes
               content
             </p>
             <button
               variant="outline"
-              className="border-warm-sage text-warm-sage hover:bg-warm-sage hover:text-cream-white"
+              className="border-warm-sage text-warm-sage dark:text-gray-100 hover:bg-warm-sage hover:text-cream-white"
             >
               {/* <Instagram className="mr-2" size={16} /> */}
               Follow @teequecollection
@@ -211,14 +212,14 @@ function Home() {
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p className="text-warm-gray text-lg">Stories from our community</p>
+            <p className="text-black dark:text-white text-lg">Stories from our community</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {mockTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white p-8 shadow-lg rounded-lg text-center"
+                className="bg-white dark:bg-gray-800 p-8 shadow-lg rounded-lg text-center"
               >
                 <div className="flex justify-center space-x-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -233,7 +234,7 @@ function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-warm-gray italic text-lg mb-6 leading-relaxed">
+                <p className="text-warm-gray dark:text-gray-100 italic text-lg mb-6 leading-relaxed">
                   "{testimonial.review}"
                 </p>
                 <div className="flex items-center justify-center space-x-3">
@@ -243,10 +244,10 @@ function Home() {
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-medium text-charcoal">
+                    <p className="font-medium text-charcoal dark:text-white">
                       {testimonial.name}
                     </p>
-                    <p className="text-warm-gray text-sm">
+                    <p className="text-warm-gray dark:text-gray-400 text-sm">
                       {testimonial.location}
                     </p>
                   </div>

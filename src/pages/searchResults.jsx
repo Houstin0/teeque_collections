@@ -25,7 +25,7 @@ export default function SearchResults({ searchQuery}) {
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li className="inline-flex items-center">
               <Link to="/shop"
-                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-white"
+                className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:underline dark:hover:text-blue-400"
               >
                 <svg
                   className="w-3 h-3 me-2.5"
@@ -74,7 +74,7 @@ export default function SearchResults({ searchQuery}) {
         <div>
           <h1 className="mb-6 text-center text-2xl font-extrabold text-black dark:text-white">
             Search Results for
-            <span className="text-blue-500"> &quot;{searchQuery}&quot;</span>
+            <span className="text-blue-500 dark:text-blue-400"> &quot;{searchQuery}&quot;</span>
           </h1>
           <section id="products" className="w-full py-4 px-4 lg:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {searchResults.map((product) => (

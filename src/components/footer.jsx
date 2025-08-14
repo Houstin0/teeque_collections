@@ -24,22 +24,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-charcoal text-soft-gray">
+    <footer className="dark:from-[#997D68] dark:to-black dark:via-black text-soft-gray dark:text-gray-100">
       {/* Newsletter Section */}
-      <div className="border-b border-warm-gray">
+      <div className="border-b border-warm-gray dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center max-w-md mx-auto">
-            <h3 className="font-serif text-2xl text-cream-white mb-4">
+            <h3 className="font-serif text-2xl text-cream-white dark:text-white mb-4">
               Stay In Style
             </h3>
-            <p className="text-sm mb-6 tracking-wide">
+            <p className="text-sm mb-6 tracking-wide dark:text-gray-300">
               Subscribe to get special offers, exclusive drops, and the latest updates.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-warm-gray border border-warm-gray rounded-md px-3 py-2 text-cream-white placeholder:text-soft-gray focus:outline-none focus:ring-2 focus:ring-warm-sage"
+                className="flex-1 bg-warm-gray dark:bg-gray-700 border border-warm-gray dark:border-gray-600 rounded-md px-3 py-2 text-cream-white dark:text-white placeholder:text-soft-gray dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-warm-sage"
                 required
               />
               <button 
@@ -49,7 +49,7 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
-            <p className="text-xs mt-3 text-warm-gray">
+            <p className="text-xs mt-3 text-warm-gray dark:text-gray-400">
               Get 10% off your first order when you subscribe
             </p>
           </div>
@@ -67,8 +67,8 @@ const Footer = () => {
       style={{ fontFamily: "'Cormorant Garamond', serif" }}
       className="flex flex-col items-start leading-none relative tracking-wide self-center"
     >
-      <span className="text-3xl font-bold text-black">TEEQUE</span>
-      <span className="text-base text-gray-900 ml-[4.25rem] mt-[-0.1rem]">
+      <span className="text-3xl font-bold text-black dark:text-white">TEEQUE</span>
+      <span className="text-base text-gray-900 dark:text-gray-300 ml-[4.25rem] mt-[-0.1rem]">
         Collections
       </span>
     </div>
@@ -76,7 +76,7 @@ const Footer = () => {
             </div>
  
             <div className="flex space-x-3">
-              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+              <button className="p-2 rounded-full text-soft-gray dark:text-gray-400 hover:text-warm-sage transition">
                          <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -89,12 +89,10 @@ const Footer = () => {
               <path
                 fill="currentColor"
                 fillRule="evenodd"
-                d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
+                d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clipRule="evenodd"/>
+</svg>
               </button>
-              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+              <button className="p-2 rounded-full text-soft-gray dark:text-gray-400 hover:text-warm-sage transition">
                             <svg
               className="w-4 h-4"
               aria-hidden="true"
@@ -109,7 +107,7 @@ const Footer = () => {
               />
             </svg>
               </button>
-              <button className="p-2 rounded-full text-soft-gray hover:text-warm-sage transition">
+              <button className="p-2 rounded-full text-soft-gray dark:text-gray-400 hover:text-warm-sage transition">
                            <svg
               className="w-4 h-4"
               aria-hidden="true"
@@ -129,7 +127,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+            <h4 className="font-medium text-cream-white dark:text-white text-sm tracking-wider uppercase mb-4">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -143,7 +141,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.href}
-                    className="text-sm hover:text-warm-sage transition-colors duration-200"
+                    className="text-sm hover:text-warm-sage transition-colors duration-200 dark:text-gray-300 dark:hover:text-warm-sage"
                   >
                     {link.name}
                   </Link>
@@ -154,7 +152,7 @@ const Footer = () => {
 
           {/* Customer Care */}
           <div>
-            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+            <h4 className="font-medium text-cream-white dark:text-white text-sm tracking-wider uppercase mb-4">
               Customer Care
             </h4>
             <ul className="space-y-3">
@@ -168,7 +166,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.href}
-                    className="text-sm hover:text-warm-sage transition-colors duration-200"
+                    className="text-sm hover:text-warm-sage transition-colors duration-200 dark:text-gray-300 dark:hover:text-warm-sage"
                   >
                     {link.name}
                   </Link>
@@ -179,24 +177,24 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-medium text-cream-white text-sm tracking-wider uppercase mb-4">
+            <h4 className="font-medium text-cream-white dark:text-white text-sm tracking-wider uppercase mb-4">
               Get In Touch
             </h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin size={16} className="text-warm-sage mt-1 flex-shrink-0" />
-                <p className="text-sm">
+                <p className="text-sm dark:text-gray-300">
                   {/* 123 Fashion Street<br /> */}
                   Nairobi, Kenya
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-warm-sage flex-shrink-0" />
-                <p className="text-sm"> 0757 166 412</p>
+                <p className="text-sm dark:text-gray-300"> 0757 166 412</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-warm-sage flex-shrink-0" />
-                <p className="text-sm">hello@teequecollection.com</p>
+                <p className="text-sm dark:text-gray-300">hello@teequecollection.com</p>
               </div>
             </div>
           </div>
@@ -204,24 +202,24 @@ const Footer = () => {
       </div>
 
       {/* Separator */}
-      <div className="h-px w-full bg-warm-gray"></div>
+      <div className="h-px w-full bg-warm-gray dark:bg-gray-700"></div>
 
       {/* Bottom Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-sm text-warm-gray">
+          <p className="text-sm text-warm-gray dark:text-gray-400">
                    <span
           id="currentYear"
-          className="block text-sm text-black sm:text-center "
+          className="block text-sm text-black dark:text-white sm:text-center "
         >
           {" "}
         </span>
           </p>
           <div className="flex space-x-6">
-            <Link to="/privacy" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">
+            <Link to="/privacy" className="text-sm text-warm-gray dark:text-gray-400 hover:text-warm-sage transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">
+            <Link to="/terms" className="text-sm text-warm-gray dark:text-gray-400 hover:text-warm-sage transition-colors">
               Terms of Service
             </Link>
             {/* <Link to="/cookies" className="text-sm text-warm-gray hover:text-warm-sage transition-colors">

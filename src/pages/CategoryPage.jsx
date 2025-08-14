@@ -15,7 +15,7 @@ function CategoryPage() {
           <li className="inline-flex items-center">
             <a
               href="/"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:underline dark:hover:text-blue-400"
             >
               <svg
                 className="w-3 h-3 me-2.5"
@@ -55,7 +55,7 @@ function CategoryPage() {
         </ol>
       </nav>
 
-      <h2 className="text-3xl font-bold text-center text-black">
+      <h2 className="text-3xl font-bold text-center text-black dark:text-white">
         {category}
       </h2>
 

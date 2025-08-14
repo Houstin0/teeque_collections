@@ -20,14 +20,14 @@ export default function Contact () {
 
 
   return (
-    <section className="bg-gradient-to-r from-blue-300 to-green-400 py-8 md:py-20">
+    <section className="bg-gradient-to-r from-blue-300 to-green-400 dark:from-gray-800 dark:to-gray-900 py-8 md:py-20">
     <div>
       <nav className="flex ml-12" aria-label="Breadcrumb ">
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <a
               href="/"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
               <svg
                 className="w-3 h-3 me-2.5"
@@ -71,7 +71,7 @@ export default function Contact () {
     <div className=" px-4 mx-auto max-w-screen-md">
 
       <p className="my-8 lg:my-10 text-xl font-semibold text-center text-black dark:text-white">
-      We’d love to hear from you! Whether you have questions about our services or need support, here’s how you can reach us:
+      We'd love to hear from you! Whether you have questions about our services or need support, here's how you can reach us:
       </p>
 
 
@@ -107,7 +107,7 @@ export default function Contact () {
                 
               />
               <div>
-                <h3 className="font-semiboldtext-black dark:text-white">
+                <h3 className="font-semibold text-black dark:text-white">
                   Email
                 </h3>
                 <p className="text-black dark:text-white">
@@ -133,7 +133,7 @@ export default function Contact () {
           <input
             type="email"
             id="email"
-            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+            className="shadow-sm bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
             placeholder="name@gmail.com"
             required
             value={email}
@@ -150,7 +150,7 @@ export default function Contact () {
           <input
             type="text"
             id="subject"
-            className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+            className="block p-3 w-full text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
             placeholder="Let us know how we can help you"
             required
             value={subject}
@@ -167,7 +167,7 @@ export default function Contact () {
           <textarea
             id="message"
             rows={6}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            className="block p-2.5 w-full text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 rounded-lg shadow-sm border border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500"
             placeholder="Leave your message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}

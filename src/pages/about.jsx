@@ -1,13 +1,13 @@
 export default function About() {
   return (
-    <section className="bg-gradient-to-r from-blue-300 to-green-400 antialiased pb-6 pt-16 mx-4 md:mx-12">
+    <section className="bg-gradient-to-r from-blue-300 to-green-400 dark:from-gray-800 dark:to-gray-900 antialiased pb-6 pt-16 mx-4 md:mx-12">
       <div>
         <nav className="flex ml-12" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li className="inline-flex items-center">
               <a
                 href="/"
-                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                className="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
                 <svg
                   className="w-3 h-3 me-2.5"
@@ -57,19 +57,19 @@ export default function About() {
             Us
           </h1>
           <div className="mx-auto max-w-2xl space-y-6">
-            <p className="text-base font-normal text-black dark:text-gray-400">
+            <p className="text-base font-normal text-black dark:text-gray-300">
               Welcome to MaliDuka, Your One-Stop Shop for All Your Needs! At MaliDuka, we are dedicated to providing a diverse range of high-quality products to our customers. From electronics and fashion to home goods and more, we strive to offer a seamless shopping experience for everyone.
             </p>
-            <h2 className="text-teal-600">Our Story</h2>
+            <h2 className="text-teal-600 dark:text-teal-400">Our Story</h2>
 
-            <p className="text-base font-normal text-black dark:text-gray-400">
+            <p className="text-base font-normal text-black dark:text-gray-300">
               MaliDuka is a small business with a big vision: to make shopping easier and more accessible for everyone. Our commitment to quality and customer satisfaction has helped us grow into a trusted name in online retail.
             </p>
 
             <p className="text-base font-semibold text-gray-900 dark:text-white">
               Why Shop With Us:
             </p>
-            <ul className="list-outside list-disc space-y-4 pl-4 text-base font-normal text-gray-700 dark:text-gray-400">
+            <ul className="list-outside list-disc space-y-4 pl-4 text-base font-normal text-gray-700 dark:text-gray-300">
               <li>
                 <span className="font-semibold text-gray-900 dark:text-white">
                   {" "}
@@ -96,12 +96,12 @@ export default function About() {
           </div>
 
           <div className="mx-auto mb-6 max-w-3xl space-y-6 md:mb-12">
-            <h2 className="text-teal-600">Follow Us on Social Media</h2>
-            <p className="text-base font-normal text-black dark:text-gray-400">
+            <h2 className="text-teal-600 dark:text-teal-400">Follow Us on Social Media</h2>
+            <p className="text-base font-normal text-black dark:text-gray-300">
               Stay connected with us on social media (@MaliDuka) for the latest updates, promotions, and more. Join our community and be part of the conversation!
             </p>
-            <h2 className="text-teal-600">Our Promise</h2>
-            <p className="text-base font-normal text-black dark:text-gray-400">
+            <h2 className="text-teal-600 dark:text-teal-400">Our Promise</h2>
+            <p className="text-base font-normal text-black dark:text-gray-300">
               At MaliDuka, we are committed to providing the best online shopping experience. From the moment you visit our site to the day your order arrives, we are here to make sure you are satisfied with your purchase. Thank you for choosing MaliDuka – Happy Shopping!
             </p>
           </div>
