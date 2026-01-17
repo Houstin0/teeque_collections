@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import productsData from "../db.json";
 import ProductCard from "../components/UI/productCard";
 import { useMediaQuery } from "react-responsive";
 
@@ -35,7 +34,10 @@ function CategoryBar({ selectedCategory, onSelectCategory }) {
 }
 
 const Shop = () => {
-  const [products, setProducts] = useState(productsData.products);
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState(["all"]);
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
@@ -79,7 +81,36 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    let filtered = [...productsData.products];
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
+
+    async function loadProducts() {
+      try {
+        setLoading(true);
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch products.");
+        }
+        const data = await res.json();
+        const normalized = (data || []).map((p) => ({
+          ...p,
+          id: p.id || p._id || p._id?.toString?.() || p.title,
+        }));
+        setAllProducts(normalized);
+        setProducts(normalized);
+      } catch (err) {
+        setError(err.message || "Unable to load products.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
+  useEffect(() => {
+    let filtered = [...allProducts];
 
     if (searchQuery) {
       filtered = filtered.filter((p) =>
@@ -136,6 +167,7 @@ const Shop = () => {
 
     setProducts(filtered);
   }, [
+    allProducts,
     searchQuery,
     selectedCategories,
     selectedPriceRanges,
@@ -569,16 +601,30 @@ const Shop = () => {
                 </select>
               </div>
             )}
-            {products.length === 0 ? (
-              <p className="text-center text-gray-500 dark:text-gray-400">
-                No products found matching your criteria.
+            {loading && (
+              <p className="text-center text-gray-500 dark:text-gray-300">
+                Loading products...
               </p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+            )}
+            {error && !loading && (
+              <p className="text-center text-red-600 dark:text-red-400">
+                {error}
+              </p>
+            )}
+            {!loading && !error && (
+              <>
+                {products.length === 0 ? (
+                  <p className="text-center text-gray-500 dark:text-gray-400">
+                    No products found matching your criteria.
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {products.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

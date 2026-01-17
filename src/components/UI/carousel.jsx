@@ -1,6 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import productsData from "../../db.json";
+
+// Static hero ads independent of product catalog to avoid db.json usage
+const ads = [
+  {
+    id: 1,
+    title: "Streetwear Essentials",
+    image:
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&h=600&fit=crop",
+  },
+  {
+    id: 2,
+    title: "Bold & Minimal",
+    image:
+      "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&h=600&fit=crop",
+  },
+  {
+    id: 3,
+    title: "Everyday Confidence",
+    image:
+      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1200&h=600&fit=crop",
+  },
+];
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,13 +29,13 @@ const Carousel = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === productsData.ads.length - 1 ? 0 : prevIndex + 1
+      prevIndex === ads.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? productsData.ads.length - 1 : prevIndex - 1
+      prevIndex === 0 ? ads.length - 1 : prevIndex - 1
     );
   };
 
@@ -36,7 +57,7 @@ const Carousel = () => {
       >
         {/* Slide Container */}
         <div className="relative h-[450px] md:h-[550px] overflow-hidden">
-          {productsData.ads.map((ad, index) => (
+          {ads.map((ad, index) => (
             <div
               key={ad.id}
               className={`absolute inset-0 duration-700 ease-in-out transition-opacity ${

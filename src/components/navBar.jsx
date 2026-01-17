@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import productsData from "../db.json";
 import CategoryBar from "./CategoryBar";
 import { useCart } from "../context/CartContext";
 import { useMediaQuery } from "react-responsive";
@@ -119,9 +118,24 @@ export default function Navbar({ onSearch }) {
   }, [location.pathname]);
 
   useEffect(() => {
-    // Fetch data and initialize search suggestions
-    const productTitles = productsData.products.map((product) => product.title);
-    setSearchSuggestions(productTitles);
+    // Fetch data and initialize search suggestions from API
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
+
+    async function loadSuggestions() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const titles = (data || []).map((product) => product.title);
+        setSearchSuggestions(titles);
+      } catch {
+        // Fail silently; search will still work but without suggestions
+      }
+    }
+
+    loadSuggestions();
   }, []);
 
   const handleSearchChange = (event) => {
@@ -130,8 +144,7 @@ export default function Navbar({ onSearch }) {
 
     if (query.trim() === "") {
       // Show all products if no query is entered
-      const allProducts = productsData.products.map((product) => product.title);
-      setSearchSuggestions(allProducts);
+      setSearchSuggestions((prev) => [...prev]);
     } else {
       // Filter suggestions based on current query
       const filteredSuggestions = searchSuggestions.filter((title) =>
@@ -157,18 +170,15 @@ export default function Navbar({ onSearch }) {
   const toggleSearchVisibility = () => {
     setIsSearchVisible(!isSearchVisible);
     if (!isSearchVisible) {
-      // When search is opened, show all products initially
-      const allProducts = productsData.products.map((product) => product.title);
-      setSearchSuggestions(allProducts);
+      // When search is opened, keep current suggestions list
+      setSearchSuggestions((prev) => [...prev]);
     }
   };
 
   const toggleMobileSearch = () => {
     setIsMobileSearchVisible(!isMobileSearchVisible);
     if (!isMobileSearchVisible) {
-      // When search is opened, show all products initially
-      const allProducts = productsData.products.map((product) => product.title);
-      setSearchSuggestions(allProducts);
+      setSearchSuggestions((prev) => [...prev]);
     }
   };
 

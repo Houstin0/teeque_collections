@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import productsData from "../db.json";
 import Carousel from "../components/UI/carousel";
 import ProductSlider from "../components/productSlider";
 
@@ -80,7 +79,38 @@ const mockTestimonials = [
 ];
 
 function Home() {
-  const totalProducts = productsData.products.length;
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
+
+    async function loadProducts() {
+      try {
+        setLoading(true);
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) {
+          throw new Error("Failed to load products.");
+        }
+        const data = await res.json();
+        // Normalize id field for cart and routing
+        const normalized = (data || []).map((p) => ({
+          ...p,
+          id: p.id || p._id || p._id?.toString?.() || p.title,
+        }));
+        setProducts(normalized);
+      } catch (err) {
+        setError(err.message || "Unable to fetch products.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
 
 
   return (
@@ -97,7 +127,19 @@ function Home() {
           Handpicked pieces that embody our vision of modern streetwear. Each
           item crafted for those who dare to stand out.
         </p>
-        <ProductSlider productsData={productsData} />
+        {loading && (
+          <p className="text-center text-gray-700 dark:text-gray-300">
+            Loading featured products...
+          </p>
+        )}
+        {error && !loading && (
+          <p className="text-center text-red-600 dark:text-red-400">
+            {error}
+          </p>
+        )}
+        {!loading && !error && products.length > 0 && (
+          <ProductSlider products={products} />
+        )}
 
         <div className="flex items-center justify-center py-8">
           <Link to="/shop"

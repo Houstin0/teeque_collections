@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import ProductCard from "../components/UI/productCard";
 
-export default function ProductSlider({ productsData }) {
+export default function ProductSlider({ products }) {
   const scrollRef = useRef();
 
   const scroll = (direction) => {
@@ -66,8 +66,8 @@ export default function ProductSlider({ productsData }) {
         ref={scrollRef}
         className="flex gap-8 mx-0 overflow-x-auto scroll-smooth no-scrollbar p-4"
       >
-        {productsData.products.map((product, index) => (
-          <ProductCard key={index} product={product} />
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

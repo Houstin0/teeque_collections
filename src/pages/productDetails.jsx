@@ -11,7 +11,6 @@ import {
   RotateCcw,
   Shield,
 } from "lucide-react";
-import productsData from "../db.json";
 import { useCart } from "../context/CartContext";
 import ProductCard from "../components/UI/productCard";
 
@@ -26,31 +25,70 @@ function ProductDetails() {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState("reviews");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const found = productsData.products.find(
-      (p) => p.title === decodeURIComponent(title)
-    );
-    if (found) {
-      setProduct(found);
-      setSelectedSize(found.sizes?.[0] || "");
-      setSelectedColor(found.colors?.[0] || "");
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
 
-      const related = productsData.products
-        .filter(
-          (p) =>
-            p.title !== found.title &&
-            p.category?.some((cat) => found.category?.includes(cat))
-        )
-        .slice(0, 4);
-      setRelatedProducts(related);
+    async function loadProduct() {
+      try {
+        setLoading(true);
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch products.");
+        }
+        const data = await res.json();
+        const normalized = (data || []).map((p) => ({
+          ...p,
+          id: p.id || p._id || p._id?.toString?.() || p.title,
+        }));
+
+        const decodedTitle = decodeURIComponent(title);
+        const found = normalized.find((p) => p.title === decodedTitle);
+
+        if (found) {
+          setProduct(found);
+          setSelectedSize(found.sizes?.[0] || "");
+          setSelectedColor(found.colors?.[0] || "");
+
+          const related = normalized
+            .filter(
+              (p) =>
+                p.title !== found.title &&
+                p.category?.some((cat) => found.category?.includes(cat))
+            )
+            .slice(0, 4);
+          setRelatedProducts(related);
+        } else {
+          setError("Product not found.");
+        }
+      } catch (err) {
+        setError(err.message || "Unable to load product.");
+      } finally {
+        setLoading(false);
+      }
     }
+
+    loadProduct();
   }, [title]);
 
-  if (!product) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-cream-white dark:bg-gray-900 flex items-center justify-center">
-        <p className="text-black dark:text-white">Product not found</p>
+        <p className="text-black dark:text-white">Loading product...</p>
+      </div>
+    );
+  }
+
+  if (!product || error) {
+    return (
+      <div className="min-h-screen bg-cream-white dark:bg-gray-900 flex items-center justify-center">
+        <p className="text-black dark:text-white">
+          {error || "Product not found"}
+        </p>
       </div>
     );
   }

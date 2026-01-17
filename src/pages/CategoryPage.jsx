@@ -1,12 +1,42 @@
 import { useParams, Link } from "react-router-dom";
-import productsData from "../db.json";
 import ProductCard from "../components/UI/productCard";
 
 function CategoryPage() {
   const { category } = useParams();
-  const filteredProducts = productsData.products.filter((product) =>
-    product.category.includes(category)
-  );
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
+
+    async function loadCategory() {
+      try {
+        setLoading(true);
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch products.");
+        }
+        const data = await res.json();
+        const normalized = (data || []).map((p) => ({
+          ...p,
+          id: p.id || p._id || p._id?.toString?.() || p.title,
+        }));
+        const filtered = normalized.filter((product) =>
+          product.category?.includes(category)
+        );
+        setProducts(filtered);
+      } catch (err) {
+        setError(err.message || "Unable to load category products.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadCategory();
+  }, [category]);
 
   return (
     <div className="flex flex-col mt-[120px]">
@@ -59,14 +89,26 @@ function CategoryPage() {
         {category}
       </h2>
 
-      <section
-        id="products"
-        className="w-full py-2 px-4 lg:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
-      >
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </section>
+      {loading && (
+        <p className="text-center text-gray-700 dark:text-gray-300 mt-4">
+          Loading products...
+        </p>
+      )}
+      {error && !loading && (
+        <p className="text-center text-red-600 dark:text-red-400 mt-4">
+          {error}
+        </p>
+      )}
+      {!loading && !error && (
+        <section
+          id="products"
+          className="w-full py-2 px-4 lg:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+        >
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </section>
+      )}
     </div>
   );
 }

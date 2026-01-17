@@ -2,9 +2,16 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  "https://teeque-collections-api.onrender.com/api";
+
 function Checkout() {
   const { cartItems, emptyCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mpesaMessage, setMpesaMessage] = useState("");
+  const [mpesaError, setMpesaError] = useState("");
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,17 +38,68 @@ function Checkout() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-    setIsModalOpen(true);
+    setMpesaMessage("");
+    setMpesaError("");
+
+    if (formData.paymentOption === "mpesa") {
+      if (!totalCost || totalCost <= 0) {
+        setMpesaError("Your cart is empty. Please add items before paying.");
+        return;
+      }
+
+      // Basic Safaricom number check before sending to backend
+      const phoneDigits = formData.phone.replace(/[^\d]/g, "");
+      if (phoneDigits.length !== 10 || !phoneDigits.startsWith("07")) {
+        setMpesaError("Enter a valid Safaricom number in the format 07XXXXXXXX.");
+        return;
+      }
+
+      try {
+        setIsSubmitting(true);
+        setMpesaMessage("Sending STK push. Check your phone to approve the payment...");
+
+        const res = await fetch(`${API_BASE_URL}/payments/mpesa/stk-push`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            phone: formData.phone,
+            amount: Number(totalCost.toFixed(2)),
+          }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          setMpesaError(
+            data?.error || "Failed to initiate M-Pesa STK push. Please try again."
+          );
+          setMpesaMessage("");
+          return;
+        }
+
+        setMpesaMessage(
+          "STK push initiated successfully. Please complete the payment on your phone."
+        );
+        setIsModalOpen(true);
+      } catch (err) {
+        setMpesaError("Network error while initiating payment. Please try again.");
+        setMpesaMessage("");
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      // Cash on delivery flow - keep simple confirmation
+      setIsModalOpen(true);
+    }
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    emptyCart();
-
-    navigate("/");
+    // Only auto-clear cart for cash orders to avoid faking Mpesa confirmation
+    if (formData.paymentOption === "cash") {
+      emptyCart();
+      navigate("/");
+    }
   };
 
   useEffect(() => {
@@ -310,10 +368,26 @@ function Checkout() {
 
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            disabled={isSubmitting}
+            className="text-white bg-blue-700 hover:bg-blue-800 disabled:opacity-60 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Complete Order
+            {isSubmitting
+              ? "Processing..."
+              : formData.paymentOption === "mpesa"
+              ? "Pay with M-Pesa"
+              : "Complete Order"}
           </button>
+
+          {mpesaMessage && (
+            <p className="mt-3 text-sm text-green-600 dark:text-green-400">
+              {mpesaMessage}
+            </p>
+          )}
+          {mpesaError && (
+            <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+              {mpesaError}
+            </p>
+          )}
         </form>
       </div>
       {/* Success Modal */}
@@ -323,7 +397,9 @@ function Checkout() {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg relative flex flex-col p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                  Order Placed Successfully!
+                  {formData.paymentOption === "mpesa"
+                    ? "Payment Request Sent"
+                    : "Order Placed Successfully!"}
                 </h3>
                 <button
                   className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
@@ -346,8 +422,9 @@ function Checkout() {
                 </button>
               </div>
               <p className="text-base text-gray-700 dark:text-gray-300">
-                Thank you for your order! Your order has been successfully
-                placed.
+                {formData.paymentOption === "mpesa"
+                  ? "We have sent an M-Pesa STK push to your phone. Approve the request to complete the payment."
+                  : "Thank you for your order! Your order has been successfully placed."}
               </p>
               <div className="mt-6">
                 <button

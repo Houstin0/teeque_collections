@@ -1,21 +1,51 @@
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
-import productsData from "../db.json";
+import { Link } from "react-router-dom";
 import ProductCard from "../components/UI/productCard";
 
-export default function SearchResults({ searchQuery}) {
+export default function SearchResults({ searchQuery }) {
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    if (searchQuery.trim() === "") {
+    const trimmed = searchQuery.trim();
+    if (trimmed === "") {
       setSearchResults([]);
-    } else {
-      // Filter products based on search query
-      const filteredProducts = productsData.products.filter((product) =>
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setSearchResults(filteredProducts);
+      setError("");
+      setLoading(false);
+      return;
     }
+
+    const API_BASE_URL =
+      import.meta.env.VITE_API_BASE_URL ||
+      "https://teeque-collections-api.onrender.com/api";
+
+    async function runSearch() {
+      try {
+        setLoading(true);
+        setError("");
+        const res = await fetch(`${API_BASE_URL}/products`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch products.");
+        }
+        const data = await res.json();
+        const normalized = (data || []).map((p) => ({
+          ...p,
+          id: p.id || p._id || p._id?.toString?.() || p.title,
+        }));
+
+        const filtered = normalized.filter((product) =>
+          product.title.toLowerCase().includes(trimmed.toLowerCase())
+        );
+        setSearchResults(filtered);
+      } catch (err) {
+        setError(err.message || "Unable to search products.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    runSearch();
   }, [searchQuery]);
 
   return (
@@ -66,22 +96,40 @@ export default function SearchResults({ searchQuery}) {
         </nav>
      
 
-      {searchResults.length === 0 ? (
-        <h1 className="text-center mb-10 text-4xl font-extrabold text-black dark:text-white">
-          No results
-        </h1>
-      ) : (
-        <div>
-          <h1 className="mb-6 text-center text-2xl font-extrabold text-black dark:text-white">
-            Search Results for
-            <span className="text-blue-500 dark:text-blue-400"> &quot;{searchQuery}&quot;</span>
-          </h1>
-          <section id="products" className="w-full py-4 px-4 lg:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {searchResults.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </section>
-        </div>
+      {loading && (
+        <p className="text-center text-gray-700 dark:text-gray-300">
+          Searching products...
+        </p>
+      )}
+      {error && !loading && (
+        <p className="text-center text-red-600 dark:text-red-400">{error}</p>
+      )}
+      {!loading && !error && (
+        <>
+          {searchResults.length === 0 ? (
+            <h1 className="text-center mb-10 text-4xl font-extrabold text-black dark:text-white">
+              No results
+            </h1>
+          ) : (
+            <div>
+              <h1 className="mb-6 text-center text-2xl font-extrabold text-black dark:text-white">
+                Search Results for
+                <span className="text-blue-500 dark:text-blue-400">
+                  {" "}
+                  &quot;{searchQuery}&quot;
+                </span>
+              </h1>
+              <section
+                id="products"
+                className="w-full py-4 px-4 lg:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+              >
+                {searchResults.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </section>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
