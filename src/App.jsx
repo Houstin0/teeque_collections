@@ -11,7 +11,6 @@ import SearchResults from "./pages/searchResults";
 import CategoryPage from "./pages/CategoryPage";
 import ShoppingCart from "./pages/shoppingCart";
 import ProductDetails from "./pages/productDetails";
-import Checkout from "./pages/checkOut";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -50,7 +49,6 @@ function App() {
           <Route path="/product/:title" element={<ProductDetails />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
-          <Route path="/shoppingCart/checkOut" element={<Checkout />} />
         </Routes>
 
         <Footer />

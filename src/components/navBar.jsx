@@ -52,8 +52,7 @@ export default function Navbar({ onSearch }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const isDark = localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const isDark = localStorage.getItem("color-theme") === "dark";
       setIsDarkMode(isDark);
 
       if (isDark) {
