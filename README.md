@@ -125,7 +125,7 @@ The frontend is organized as a page-driven React app with reusable components un
 ### State management
 
 - Global cart state stored in `src/context/CartContext.jsx`
-- Cart contents persisted to `localStorage`
+- Cart contents persisted
 - UI state and form state managed locally within page and component hooks
 
 ## API integration
