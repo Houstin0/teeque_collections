@@ -4,7 +4,7 @@
 ![React](https://img.shields.io/badge/React-61dafb?style=for-the-badge&logo=react&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38b2ac?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-## Project title & description
+## Description
 
 Teeque Collections Frontend is a responsive e-commerce storefront built with React and Tailwind CSS for browsing products, searching by category, and managing a shopping cart. It is designed for customers and merchandising teams who need a polished retail UI that integrates with a headless product API and supports M-Pesa checkout and WhatsApp order flow.
 
